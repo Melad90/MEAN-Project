@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatExpansionModule } from '@angular/material';
 import { AppComponent } from './app.component';
@@ -35,6 +35,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatExpansionModule,
     HttpClientModule
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [PostsService],
   bootstrap: [AppComponent]
 })

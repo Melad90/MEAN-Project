@@ -22,7 +22,7 @@ export class PostsService {
                 };
             });
        }))
-       .subscribe((Transformedposts) => { 
+       .subscribe((Transformedposts) => {
             this.posts = Transformedposts;
             this.PostsUpdated.next([...this.posts]);
        });
