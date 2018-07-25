@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'marnarsay';
-  storedPost =  [];
-  onPostAdded(post) {
-    this.storedPost.push(post);
-  }
 }

@@ -1,1 +1,53 @@
-<mat-toolbar color="primary">Marnarsay</mat-toolbar>
+<mat-toolbar color="primary">
+    <span><a routerLink="/"> Marnarsay </a></span>
+    <ul>
+        <li>
+            <a routerLink="/create">Skapa en nyhet</a>
+        </li>
+    </ul>
+
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
+
+            <!-- Navbar brand -->
+            <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+        
+            <!-- Collapsible content -->
+            <links>
+        
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                        <li class="nav-item">
+                          <a class="nav-link waves-effect waves-light">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link waves-effect waves-light">
+                            <i class="fa fa-google-plus"></i>
+                          </a>
+                        </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-unique" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;;">Action</a>
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;;">Another action</a>
+                            <a class="dropdown-item waves-effect waves-light" href="javascript:;;">Something else here</a>
+                          </div>
+                       </li>
+                    </ul>
+            </links>
+    </mdb-navbar>
+</mat-toolbar>

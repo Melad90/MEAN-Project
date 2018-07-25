@@ -4,6 +4,10 @@
       {{ post.title }}
     </mat-expansion-panel-header>
     <p>{{ post.innehall }}</p>
+    <mat-action-row>
+        <button mat-button color="primary"><i class="material-icons">edit</i></button>
+        <button mat-button color="warn"(click)="onDelete(post.id)"><i class="material-icons">delete_forever</i></button>
+      </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 <p class="mat-body-1" *ngIf="posts.length <= 0">Inga Nyheter för tillfället!</p>
