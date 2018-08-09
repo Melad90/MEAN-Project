@@ -1,13 +1,14 @@
-<mat-card>
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+<mat-card style="width: 80%; margin: 15px auto;">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoaading">
     <mat-form-field>
-      <input placeholder="Titel" matInput type="text" name="title" ngModel required #title="ngModel">
+      <input placeholder="Titel" matInput type="text" name="title" minlength="3" [ngModel]="post?.title" required #title="ngModel">
       <mat-error *ngIf="title.invalid">mata in titeln!</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <textarea placeholder="Innehåll" matInput rows="6" ngModel name="innehall" required #innehall="ngModel"></textarea>
-        <mat-error *ngIf="innehall.invalid">mata in Innehållet!</mat-error><br>
-    </mat-form-field><br /><br />
+        <textarea placeholder="Innehåll" matInput rows="6" [ngModel]="post?.innehall" name="innehall" required #innehall="ngModel"></textarea>
+        <mat-error *ngIf="innehall.invalid">mata in Innehållet!</mat-error>
+    </mat-form-field><br><br>
       <button color="accent" mat-raised-button type="submit">Save</button>
   </form>
 </mat-card>
