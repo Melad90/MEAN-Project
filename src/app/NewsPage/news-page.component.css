@@ -1,0 +1,14 @@
+.card {
+    width: 80%;
+    margin: 2% auto;
+    font-weight: 300;
+    box-shadow: 0 0px 0px 0;
+}
+
+.card-body {
+    padding: 0%;
+}
+
+.card-title {
+    margin-bottom: 2.75rem;
+}

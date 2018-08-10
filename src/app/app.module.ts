@@ -14,6 +14,7 @@ import { PostsService } from './posts/posts.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { StartPageComponent } from './startPage/startpage.component';
+import { NewsPageComponent } from './NewsPage/news-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StartPageComponent } from './startPage/startpage.component';
     PostCreateComponent,
     HeaderComponent,
     PostListComponent,
-    StartPageComponent
+    StartPageComponent,
+    NewsPageComponent
   ],
   imports: [
     BrowserModule,

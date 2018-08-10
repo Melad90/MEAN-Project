@@ -3,7 +3,6 @@ import {NgForm} from '@angular/forms';
 import { PostsService } from '../posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../post.model';
-import { formatDate } from '../../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-post-create',
@@ -12,8 +11,8 @@ import { formatDate } from '../../../../node_modules/@angular/common';
 })
 
 export class PostCreateComponent implements OnInit {
-  enteredInnehall = '';
-  enteredTitle = '';
+  //enteredInnehall = '';
+  //enteredTitle = '';
   isLoading = false;
   private mode = 'create';
   private postId: string;

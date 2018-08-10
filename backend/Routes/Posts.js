@@ -34,8 +34,18 @@ routes.get('/:id', (req, res, next) => {
         } else {
             res.status(404).json({message: 'Post not found!'});
         }
-    })
-})
+    });
+});
+
+routes.get('/:title', (req, res, next) => {
+    Post.findOne(req.params.title).then(post => {
+        if (post) {
+            res.status(200).json(post);
+        } else {
+            res.status(404).json({message: 'Post not found!'});
+        }
+    });
+});
 
 routes.get('', (req, res, next) => {
     Post.find().then(documents => {

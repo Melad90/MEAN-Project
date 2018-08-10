@@ -13,8 +13,8 @@
 </mat-accordion>
 <p class="mat-body-1" *ngIf="posts.length <= 0 && !isLoading">Inga Nyheter för tillfället!</p>-->
 
-<div class="preloader-wrapper big active" *ngIf="isLoading">
-    <div class="spinner-layer spinner-blue">
+<div class="preloader-wrapper big active" *ngIf="isLoading"> 
+     <div class="spinner-layer spinner-blue">
       <div class="circle-clipper left">
         <div class="circle"></div>
       </div>
@@ -82,7 +82,7 @@
         <!--Text-->
         <p class="card-text">{{ post.innehall }}</p>
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-light-blue btn-md">Läs mer</button>
+        <button type="button" [routerLink]="['/Nyhet', post.id]" class="btn btn-light-blue btn-md">Läs mer</button>
   
       </div>
   
