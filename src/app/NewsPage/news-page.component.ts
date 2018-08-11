@@ -20,7 +20,7 @@ export class NewsPageComponent implements OnInit{
                 this.postId = paramMap.get('postId');
                 console.log('postId ' + this.postId);
                 this.postService.getPost(this.postId).subscribe(postData => {
-                    this.post = {id: postData._id, title: postData.title, innehall: postData.innehall};
+                    this.post = {id: postData._id, rubrik: postData.rubrik, ingress: postData.ingress, innehall: postData.innehall};
                 });
             }
         });

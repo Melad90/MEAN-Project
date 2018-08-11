@@ -17,7 +17,8 @@ export class PostsService {
        .pipe(map((postData) => {
             return postData.posts.map(post => {
                 return {
-                    title: post.title,
+                    rubrik: post.rubrik,
+                    ingress: post.ingress,
                     innehall: post.innehall,
                     id: post._id
                 };
@@ -34,7 +35,7 @@ export class PostsService {
     }
 
     getPost(id: string) {
-        return this.httpClient.get<{_id: string, title: string, innehall: string}>('http://localhost:3000/api/posts/' + id);
+        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string}>('http://localhost:3000/api/posts/' + id);
     }
 
     deletePost(postId: string) {
@@ -46,8 +47,8 @@ export class PostsService {
         });
     }
 
-    updatePost(id: string, title: string, innehall: string) {
-        const post: Post = { id: id, title: title, innehall: innehall};
+    updatePost(id: string, rubrik: string, ingress: string, innehall: string) {
+        const post: Post = { id: id, rubrik: rubrik, ingress: ingress, innehall: innehall};
         this.httpClient.put('http://localhost:3000/api/posts/' + id, post )
         .subscribe(response => {
             const updatedPosts = [...this.posts];
@@ -59,13 +60,16 @@ export class PostsService {
         })
     }
 
-    addPost(title: string, innehall: string) {
-        const post: Post = {id: null, title: title, innehall: innehall};
+    addPost(rubrik: string, ingress: string, innehall: string, image: File) {
+        const formData = new FormData();
+        formData.append('rubrik', rubrik);        
+        formData.append('ingress', ingress);
+        formData.append('innehall', innehall);
+        formData.append('image', image, rubrik);
         this.httpClient
-        .post<{message: string, postId: string }>('http://localhost:3000/api/posts', post)
+        .post<{message: string, postId: string }>('http://localhost:3000/api/posts', formData)
         .subscribe(responseData => {
-            const id = responseData.postId;
-            post.id = id;
+            const post: Post = {id: responseData.postId, rubrik: rubrik, ingress: ingress, innehall: innehall};
             this.posts.push(post);
             this.PostsUpdated.next([...this.posts]);
             this.router.navigate(['/']);

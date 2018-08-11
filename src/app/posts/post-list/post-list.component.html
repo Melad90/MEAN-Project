@@ -10,62 +10,13 @@
         <a mat-button color="warn"(click)="onDelete(post.id)"><i class="material-icons">delete_forever</i></a>
       </mat-action-row>
   </mat-expansion-panel>
-</mat-accordion>
-<p class="mat-body-1" *ngIf="posts.length <= 0 && !isLoading">Inga Nyheter för tillfället!</p>-->
-
-<div class="preloader-wrapper big active" *ngIf="isLoading"> 
-     <div class="spinner-layer spinner-blue">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div>
-      <div class="gap-patch">
-        <div class="circle"></div>
-      </div>
-      <div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-    <div class="spinner-layer spinner-red">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div>
-      <div class="gap-patch">
-        <div class="circle"></div>
-      </div>
-      <div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-    <div class="spinner-layer spinner-yellow">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div>
-      <div class="gap-patch">
-        <div class="circle"></div>
-      </div>
-      <div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-    <div class="spinner-layer spinner-green">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div>
-      <div class="gap-patch">
-        <div class="circle"></div>
-      </div>
-      <div class="circle-clipper right">
-        <div class="circle"></div>
-      </div>
-    </div>
-</div>
+</mat-accordion>-->
+<p class="mat-body-1" *ngIf="posts.length <= 0 && !isLoading">Inga Nyheter för tillfället!</p>
 
 <!-- Card deck -->
-<div style="width: 80%; margin: 15px auto;" class="card-deck" *ngIf="posts.length > 0 && !isLoading">
-
+<div class="card-deck" *ngIf="posts.length > 0 && !isLoading">
     <!-- Card -->
     <div class="card mb-4" *ngFor="let post of posts"> 
-  
       <!--Card image-->
       <div class="view overlay">
         <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
@@ -73,19 +24,15 @@
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-  
       <!--Card content-->
       <div class="card-body">
-  
         <!--Title-->
-        <h4 class="card-title">{{ post.title }}</h4>
+        <h4 class="card-title">{{ post.rubrik }}</h4>
         <!--Text-->
-        <p class="card-text">{{ post.innehall }}</p>
+        <p class="card-text">{{ post.ingress }}</p>
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
         <button type="button" [routerLink]="['/Nyhet', post.id]" class="btn btn-light-blue btn-md">Läs mer</button>
-  
       </div>
-  
     </div>
     <!-- Card -->
   </div>

@@ -6,11 +6,32 @@ mat-spinner {
   margin: auto;
 }
 
+.card {
+  position: inherit;
+}
+
 .card-deck {
   column-count: 3;
   display: block;
+  width: 80%; 
+  padding-top: 7%; 
+  margin: 15px auto;
 }
 
 .card-deck .card {
  display: inline-table;
+}
+
+@media only screen and (min-width: 260px) and (max-width: 600px) {
+  .card-deck {
+    column-count: 1;
+    padding-top: 20%; 
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 824px) {
+  .card-deck {
+    column-count: 2;
+    padding-top: 20%; 
+  }
 }

@@ -6,3 +6,39 @@ textarea {
 mat-spinner {
   margin: auto;
 }
+
+input[type="file"]{
+  visibility: hidden;
+}
+
+input.counter-danger ~ span.text-danger, input.counter-success ~ span.text-success {
+  visibility:  hidden !important;
+}
+
+.inputVal {
+  visibility: hidden !important;
+}
+
+.card {
+  width: 80%;
+  margin: 2% auto;
+  font-weight: 300;
+  box-shadow: 0 0px 0px 0;
+  height: 100%;
+  margin-top: 15%;
+}
+
+.img-preview {
+  height: 10rem;
+  margin: 1rem 0;
+}
+
+.img-preview img {
+  height: 100%;
+}
+
+@media only screen and (min-width: 260px) and (max-width: 824px) {
+  .card {
+    margin-top: 30%;
+  }
+}

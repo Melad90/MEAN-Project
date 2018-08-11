@@ -1,14 +1,28 @@
-<mat-card style="width: 80%; margin: 15px auto;">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoaading">
-    <mat-form-field>
-      <input placeholder="Titel" matInput type="text" name="title" minlength="3" [ngModel]="post?.title" required #title="ngModel">
-      <mat-error *ngIf="title.invalid">mata in titeln!</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-        <textarea placeholder="Innehåll" matInput rows="6" [ngModel]="post?.innehall" name="innehall" required #innehall="ngModel"></textarea>
-        <mat-error *ngIf="innehall.invalid">mata in Innehållet!</mat-error>
-    </mat-form-field><br><br>
-      <button color="accent" mat-raised-button type="submit">Save</button>
-  </form>
-</mat-card>
+<div class="card card-body">
+  <mat-card>
+    <mdb-spinner spinnerType="big" spinnerColor="blue" *ngIf="isLoading"></mdb-spinner>
+      <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+          <div class="md-form">
+              <input mdbInputDirective type="text" class="form-control" formControlName="rubrik">
+              <label for="form1" class="">Rubrik</label> 
+              <div *ngIf="form.get('rubrik').invalid" style="color: red;">obligatoriskt fält!</div>
+          </div>
+          <div class="md-form">
+              <input mdbInputDirective type="text" class="form-control" formControlName="ingress">
+              <label for="form1" class="">Ingress</label>
+              <div *ngIf="form.get('ingress').invalid" style="color: red;">obligatoriskt fält!</div>
+          </div>
+          <div class="md-form">
+              <textarea mdbInputDirective type="text" class="md-textarea form-control" rows="15" formControlName="innehall"></textarea>
+              <label for="form7">Innehåll</label>
+              <div *ngIf="form.get('innehall').invalid" style="color: red;">obligatoriskt fält!</div>
+          </div>
+          <div class="img-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+            <img formControlName="image" [src]="imagePreview" [alt]="form.value.rubrik">
+          </div>
+            <button type="submit" mdbWavesEffect class="btn btn-light-blue waves-effect waves-light">Spara</button>
+            <button  style="float: right;" type="button" (click)="imgpicker.click()" mdbWavesEffect class="btn btn-outline-info waves-effect instafilta-target"><i class="fa fa-image" aria-hidden="true"></i></button>
+            <input type="file" #imgpicker (change)="onImgPicked($event)">
+      </form>
+  </mat-card>
+</div>

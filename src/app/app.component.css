@@ -2,4 +2,10 @@ main {
   width: 100%;
   margin: 15px auto;
   display: contents;
+  flex: 1;
+}
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

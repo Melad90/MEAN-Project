@@ -1,6 +1,7 @@
 export interface Post {
     id: string;
-    title: string;
+    rubrik: string;
+    ingress: string;
     innehall: string;
     //datum: number;
 }
