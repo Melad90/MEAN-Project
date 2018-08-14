@@ -3,5 +3,5 @@ export interface Post {
     rubrik: string;
     ingress: string;
     innehall: string;
-    //datum: number;
+    imagePath: string;
 }

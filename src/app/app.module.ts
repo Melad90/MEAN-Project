@@ -4,7 +4,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule, MatPaginatorModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +40,7 @@ import { FooterComponent } from './footer/footer.component';
     MatToolbarModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
     HttpClientModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

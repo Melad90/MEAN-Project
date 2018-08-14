@@ -43,11 +43,18 @@ export class PostCreateComponent implements OnInit {
         this.isLoading = true;
         this.postsService.getPost(this.postId).subscribe(postData => {
           this.isLoading = false;
-          this.post = {id: postData._id, rubrik: postData.rubrik, ingress: postData.ingress, innehall: postData.innehall};
+          this.post = {
+            id: postData._id, 
+            rubrik: postData.rubrik, 
+            ingress: postData.ingress, 
+            innehall: postData.innehall, 
+            imagePath: postData.imagePath
+          };
           this.form.setValue({
             'rubrik': this.post.rubrik,
             'ingress': this.post.ingress,
-            'innehall': this.post.innehall
+            'innehall': this.post.innehall,
+            'image': this.post.imagePath
           });
         });
       } else {
@@ -78,7 +85,7 @@ export class PostCreateComponent implements OnInit {
     if (this.mode === 'create'){
       this.postsService.addPost(this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall, this.form.value.image); 
     } else {
-      this.postsService.updatePost(this.postId, this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall);
+      this.postsService.updatePost(this.postId, this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall, this.form.value.image);
     }
     this.form.reset();
   }

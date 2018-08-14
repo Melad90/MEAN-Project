@@ -5,5 +5,8 @@
 <div class="card card-body">
         <h3 class="card-title">{{ post?.rubrik }}</h3>
         <h5 class="card-title">{{ post?.ingress }}</h5>
-        <p class="card-text">{{ post?.innehall }}</p>
-    </div>
+        <div class="image-preview">
+            <img [src]="post?.imagePath" [alt]="post?.rubrik">
+            <p class="card-text">{{ post?.innehall }}</p>
+        </div>
+</div>

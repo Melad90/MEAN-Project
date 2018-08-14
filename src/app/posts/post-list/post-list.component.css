@@ -22,6 +22,14 @@ mat-spinner {
  display: inline-table;
 }
 
+.view img {
+  height: 205.48px;
+}
+
+.pagination.pg-blue .page-item.active .page-link {
+  background-color: #82b1ff !important;
+}
+
 @media only screen and (min-width: 260px) and (max-width: 600px) {
   .card-deck {
     column-count: 1;

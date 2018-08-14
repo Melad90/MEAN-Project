@@ -20,7 +20,8 @@ export class PostsService {
                     rubrik: post.rubrik,
                     ingress: post.ingress,
                     innehall: post.innehall,
-                    id: post._id
+                    id: post._id,
+                    imagePath: post.imagePath
                 };
             });
        }))
@@ -35,7 +36,9 @@ export class PostsService {
     }
 
     getPost(id: string) {
-        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string}>('http://localhost:3000/api/posts/' + id);
+        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string, imagePath: string}>(
+            'http://localhost:3000/api/posts/' + id
+        );
     }
 
     deletePost(postId: string) {
@@ -47,12 +50,36 @@ export class PostsService {
         });
     }
 
-    updatePost(id: string, rubrik: string, ingress: string, innehall: string) {
-        const post: Post = { id: id, rubrik: rubrik, ingress: ingress, innehall: innehall};
-        this.httpClient.put('http://localhost:3000/api/posts/' + id, post )
+    updatePost(id: string, rubrik: string, ingress: string, innehall: string, image: any) {
+        let postData: Post | FormData;
+        if(typeof(image) === 'object') {
+            postData = new FormData();
+            postData.append('id', id);
+            postData.append('rubrik', rubrik);
+            postData.append('ingress', ingress);
+            postData.append('innehall', innehall);
+            postData.append('image', image, rubrik);
+        } else {
+            postData = {
+                id: id,
+                rubrik: rubrik,
+                ingress: ingress,
+                innehall: innehall,
+                imagePath: image 
+            };
+        }
+
+        this.httpClient.put('http://localhost:3000/api/posts/' + id, postData )
         .subscribe(response => {
             const updatedPosts = [...this.posts];
-            const oldPostsIndex =  updatedPosts.findIndex(p => p.id === post.id);
+            const oldPostsIndex =  updatedPosts.findIndex(p => p.id === id);
+            const post: Post = {
+                id: id,
+                rubrik: rubrik,
+                ingress: ingress,
+                innehall: innehall,
+                imagePath: ""
+            }
             updatedPosts[oldPostsIndex] = post;
             this.posts = updatedPosts;
             this.PostsUpdated.next([...this.posts]);
@@ -67,9 +94,9 @@ export class PostsService {
         formData.append('innehall', innehall);
         formData.append('image', image, rubrik);
         this.httpClient
-        .post<{message: string, postId: string }>('http://localhost:3000/api/posts', formData)
+        .post<{message: string, post: Post }>('http://localhost:3000/api/posts', formData)
         .subscribe(responseData => {
-            const post: Post = {id: responseData.postId, rubrik: rubrik, ingress: ingress, innehall: innehall};
+            const post: Post = {id: responseData.post.id, rubrik: rubrik, ingress: ingress, innehall: innehall, imagePath: responseData.post.imagePath};
             this.posts.push(post);
             this.PostsUpdated.next([...this.posts]);
             this.router.navigate(['/']);

@@ -6,9 +6,27 @@
     height: 100%;
 }
 .card-body {
-    padding-top: 5%;
+    padding-top: 7%;
 }
 
 .card-title {
     margin-bottom: 2.75rem;
 }
+.image-preview img {
+    float: right;
+    width: 50%;
+    margin-left: 1%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (min-width: 260px) and (max-width: 600px) {
+    .card-body {
+      padding-top: 20%; 
+    }
+  }
+  
+  @media only screen and (min-width: 600px) and (max-width: 824px) {
+    .card-body {
+      padding-top: 20%; 
+    }
+  }
