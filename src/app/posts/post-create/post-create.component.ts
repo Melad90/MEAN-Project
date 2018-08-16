@@ -17,14 +17,14 @@ export class PostCreateComponent implements OnInit {
   private postId: string;
   post: Post;
   form: FormGroup;
-  imagePreview: string;
+  imagePreview: any;
 
   editorConfig = {
     editable: true,
     spellcheck: false,
     height: '10rem',
     minHeight: '5rem',
-    placeholder: 'Type something. Test the Editor... ヽ(^。^)丿',
+    placeholder: 'Mata in innehållet',
     translate: 'no'
   };
 
