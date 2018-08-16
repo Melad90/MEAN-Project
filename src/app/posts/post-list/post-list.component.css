@@ -2,44 +2,48 @@
   display: block;
   margin-top: 15px;
 }
-mat-spinner {
-  margin: auto;
+
+.Paging{
+  display: flex;
+  justify-content: center;
+}
+.pagination /deep/ .ngx-pagination{
+  margin-left: -45px;
+}
+.pagination /deep/ .ngx-pagination .current {
+  background-color: #82b1ff !important;
 }
 
 .card {
   position: inherit;
 }
+.col-md-4 {
+  margin: 2% 0px;
+}
 
-.card-deck {
-  column-count: 3;
+.container {
   display: block;
   width: 80%; 
   padding-top: 7%; 
   margin: 15px auto;
 }
 
-.card-deck .card {
- display: inline-table;
-}
-
 .view img {
   height: 205.48px;
 }
 
-.pagination.pg-blue .page-item.active .page-link {
-  background-color: #82b1ff !important;
-}
-
 @media only screen and (min-width: 260px) and (max-width: 600px) {
-  .card-deck {
-    column-count: 1;
-    padding-top: 20%; 
+  .container {
+    padding-top: 20%;
+  }
+  .card {
+    margin-bottom: 20px;
   }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 824px) {
-  .card-deck {
-    column-count: 2;
+  .container {
     padding-top: 20%; 
+    width: 90%;
   }
 }

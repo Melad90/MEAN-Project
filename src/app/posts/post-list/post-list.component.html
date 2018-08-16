@@ -11,32 +11,30 @@
       </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>-->
-<p class="mat-body-1" *ngIf="posts.length <= 0 && !isLoading">Inga Nyheter för tillfället!</p>
 
-<!-- Card deck -->
-<div class="card-deck" *ngIf="posts.length > 0 && !isLoading">
-    <!-- Card -->
-    <div class="card mb-4" *ngFor="let post of posts"> 
-      <!--Card image-->
-      <div class="view overlay">
-        <img class="card-img-top" [src]="post.imagePath" [alt]="post.rubrik">
-        <a [routerLink]="['/Nyhet', post.id]">
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
-      <!--Card content-->
-      <div class="card-body">
-        <!--Title-->
-        <h4 class="card-title">{{ post.rubrik }}</h4>
-        <!--Text-->
-        <p class="card-text">{{ post.ingress }}</p>
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" [routerLink]="['/Nyhet', post.id]" class="btn btn-light-blue btn-md">Läs mer</button>
+
+<div class="py-5">
+  <div class="container" *ngIf="posts.length > 0 && !isLoading">
+    <div class="row hidden-md-up">
+      <div class="col-md-4" *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: p }">
+        <div class="card">
+          <div class="card-block">
+              <div class="view overlay">
+                  <img class="card-img-top" [src]="post.imagePath" [alt]="post.rubrik">
+                  <a [routerLink]="['/Nyhet', post.id]">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+            <h4 class="card-title" style="padding: 2%;">{{ post.rubrik }}</h4>
+            <h6 class="card-subtitle text-muted" style="padding: 2%;">{{ post.ingress }}</h6>
+            <button type="button" [routerLink]="['/Nyhet', post.id]" class="btn btn-light-blue btn-md" style="margin: 2%; float: right;">Läs mer</button>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Card -->
   </div>
-  <!-- Card deck -->
-  <mat-paginator #paginator [length]="totalPosts" [pageSize]="postPerPage" [pageSizeOptions]="pageSize" [showFirstLastButtons]="true"
-  [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)">
-</mat-paginator>
+</div>
+  <div class="Paging">
+    <pagination-controls class="pagination" (pageChange)="p = $event" maxSize="9" directionLinks="true" autoHide="true" responsive="true" previousLabel="Föregående" nextLabel="Nästa"></pagination-controls>
+  </div>
+<p class="mat-body-1" *ngIf="posts.length <= 0 && !isLoading">Inga Nyheter för tillfället!</p>

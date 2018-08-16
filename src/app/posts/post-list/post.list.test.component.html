@@ -1,0 +1,24 @@
+<!-- Card deck -->
+<div class="card-deck" *ngIf="posts.length > 0 && !isLoading">
+    <!-- Card -->
+    <div class="card mb-4" *ngFor="let post of posts"> 
+            <!--Card image-->
+            <div class="view overlay">
+              <img class="card-img-top" [src]="post.imagePath" [alt]="post.rubrik">
+              <a [routerLink]="['/Nyhet', post.id]">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card content-->
+            <div class="card-body">
+              <!--Title-->
+              <h4 class="card-title">{{ post.rubrik }}</h4>
+              <!--Text-->
+              <p class="card-text">{{ post.ingress }}</p>
+              <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+              <button type="button" [routerLink]="['/Nyhet', post.id]" class="btn btn-light-blue btn-md">Läs mer</button>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>-->
+        <!-- Card deck -->

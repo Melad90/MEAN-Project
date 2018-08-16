@@ -19,8 +19,19 @@ export class PostCreateComponent implements OnInit {
   form: FormGroup;
   imagePreview: string;
 
+  editorConfig = {
+    editable: true,
+    spellcheck: false,
+    height: '10rem',
+    minHeight: '5rem',
+    placeholder: 'Type something. Test the Editor... ヽ(^。^)丿',
+    translate: 'no'
+  };
+
+  htmlContent = '<p>Hi</p>';
+
   constructor(public postsService: PostsService, public route: ActivatedRoute) { }
-  
+
   ngOnInit() {
     this.form = new FormGroup({
       'rubrik': new FormControl(null, {

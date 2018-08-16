@@ -3,8 +3,19 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxEditorModule } from 'ngx-editor';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-import { MatCardModule, MatInputModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatProgressSpinnerModule, MatPaginatorModule } from '@angular/material';
+import { 
+  MatCardModule, 
+  MatInputModule, 
+  MatButtonModule, 
+  MatToolbarModule, 
+  MatExpansionModule, 
+  MatProgressSpinnerModule, 
+  MatPaginatorModule 
+} from '@angular/material';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +52,10 @@ import { FooterComponent } from './footer/footer.component';
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule,
+    NgxEditorModule,
+    TooltipModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [PostsService],
