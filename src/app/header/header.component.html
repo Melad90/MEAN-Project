@@ -6,18 +6,21 @@
       <links>
         <span class="spacer"></span>
           <ul class="navbar-nav mr-auto">
-                <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
-                    <a mat-button class="nav-link" routerLink="/">Hem</a>
-                </li>
-              <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
-                  <a mat-button class="nav-link" routerLink="/Nyheter">Nyheter</a>
-              </li>
-              <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
-                  <a mat-button class="nav-link">Media</a>
-              </li>
-              <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
-                <a mat-button class="nav-link" routerLink="/create">Skapa</a>
+            <li class="nav-item waves-light" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active" mdbWavesEffect>
+                <a mat-button class="nav-link" routerLink="/">Hem</a>
             </li>
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a mat-button class="nav-link" routerLink="/Nyheter">Nyheter</a>
+            </li>
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a mat-button class="nav-link">Media</a>
+            </li>
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a mat-button class="nav-link">Kateket</a>
+            </li>
+            <li class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+            <a mat-button class="nav-link" routerLink="/create">Skapa</a>
+        </li>
           </ul>
       </links>
   </mdb-navbar>

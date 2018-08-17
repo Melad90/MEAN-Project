@@ -7,6 +7,6 @@
         <h5 class="card-title">{{ post?.ingress }}</h5>
         <div class="image-preview">
             <img [src]="post?.imagePath" [alt]="post?.rubrik">
-            <p class="card-text">{{ post?.innehall }}</p>
+            <div class="card-text" innerHTML="{{ post?.innehall }}"></div>
         </div>
 </div>
