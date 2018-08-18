@@ -27,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StartPageComponent } from './startPage/startpage.component';
 import { NewsPageComponent } from './NewsPage/news-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { OmOssComponent } from './OmOss/om-oss.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FooterComponent } from './footer/footer.component';
     PostListComponent,
     StartPageComponent,
     NewsPageComponent,
-    FooterComponent
+    FooterComponent,
+    OmOssComponent
   ],
   imports: [
     BrowserModule,

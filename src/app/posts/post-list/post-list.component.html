@@ -11,8 +11,7 @@
       </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>-->
-
-
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <div class="py-5">
   <div class="container" *ngIf="posts.length > 0 && !isLoading">
     <div class="row hidden-md-up">
