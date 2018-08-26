@@ -28,6 +28,7 @@ import { StartPageComponent } from './startPage/startpage.component';
 import { NewsPageComponent } from './NewsPage/news-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { OmOssComponent } from './OmOss/om-oss.component';
+import { KontaktOssComponent } from './KontaktOss/kontakt-oss.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { OmOssComponent } from './OmOss/om-oss.component';
     StartPageComponent,
     NewsPageComponent,
     FooterComponent,
-    OmOssComponent
+    OmOssComponent,
+    KontaktOssComponent
   ],
   imports: [
     BrowserModule,

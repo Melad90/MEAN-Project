@@ -1,0 +1,97 @@
+<section class="section">
+
+  <!--Section heading-->
+  <h2 class="h1-responsive font-weight-bold text-center my-5" style="font-weight: 300 !important;">Kontakta oss</h2>
+  <!--Section description-->
+  <p class="text-center w-responsive mx-auto mb-5">Du är självklart välkommen att kontakta oss! Använd kontaktformuläret nedan eller slå oss en signal</p>
+
+  <div class="row">
+      <!--Grid column-->
+      <div class="col-md-9 mb-md-0 mb-5">
+          <form [formGroup]="form" >
+              <!--Grid row-->
+              <div class="row">
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                      <div class="md-form mb-0">
+                          <!--<input type="text" id="name" name="name" class="form-control">-->
+                          <input mdbInputDirective type="text" class="form-control" formControlName="namn">
+                          <label for="name" class="">Ditt namn</label>
+                      </div>
+                  </div>
+                  <!--Grid column-->
+
+                  <!--Grid column-->
+                  <div class="col-md-6">
+                      <div class="md-form mb-0">
+                          <!--<input type="text" id="email" name="email" class="form-control">-->
+                          <input mdbInputDirective type="text" class="form-control" formControlName="epost">
+                          <label for="email" class="">Din Epost</label>
+                      </div>
+                  </div>
+                  <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="md-form mb-0">
+                          <!--<input type="text" id="subject" name="subject" class="form-control">-->
+                          <input mdbInputDirective type="text" class="form-control" formControlName="rubrik">
+                          <label for="subject" class="">Rubrik</label>
+                      </div>
+                  </div>
+              </div>
+              <!--Grid row-->
+
+              <!--Grid row-->
+              <div class="row">
+
+                  <!--Grid column-->
+                  <div class="col-md-12">
+
+                      <div class="md-form">
+                          <!--<textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>-->
+                          <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" style="white-space: pre-line;" formControlName="innehall" mdbInputDirective></textarea>
+                          <label for="message">Ditt meddelande</label>
+                      </div>
+
+                  </div>
+              </div>
+              <!--Grid row-->
+
+          <div class="text-center text-md-left">
+              <a class="btn btn-light-blue btn-md" >Skicka</a>
+          </div>
+          <div class="status"></div>
+        </form>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-3 text-center" style="margin-top: 15px;">
+          <ul class="list-unstyled mb-0">
+              <li><i class="fa fa-map-marker fa-2x" style="color: #82b1ff;"></i>
+                  <p>Gröndalsvägen, 151 65 Södertälje</p>
+              </li>
+
+              <li><i class="fa fa-phone mt-4 fa-2x" style="color: #82b1ff;"></i>
+                  <p><a href="tel:+46 76 060 20 35" style="color:#212529;">+46 76 060 20 35</a></p>
+              </li>
+
+              <li><i class="fa fa-envelope mt-4 fa-2x" style="color: #82b1ff;"></i>
+                  <p><a href="mailto:kontakt@marnarsay.com" style="color:#212529;">kontakt@marnarsay.com</a></p>
+              </li>
+          </ul>
+      </div>
+      <!--Grid column-->
+
+  </div>
+
+</section>
+<div class="embed-responsive embed-responsive-21by9">
+  <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8177.1774768191535!2d17.6099963!3d59.1776554!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe6cadff6f5f16aac!2sKald%C3%A9iskt+Kulturcentrum+Jungfru+Maria+Kyrka!5e0!3m2!1ssv!2sse!4v1535286418818" allowfullscreen></iframe>
+</div>
