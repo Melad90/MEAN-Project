@@ -20,8 +20,8 @@
           <div class="img-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
             <img formControlName="image" [src]="imagePreview" [alt]="form.value.rubrik">
           </div>
-            <button type="submit" mdbWavesEffect class="btn btn-light-blue waves-effect waves-light">Spara</button>
-            <button  style="float: right;" type="button" (click)="imgpicker.click()" mdbWavesEffect class="btn btn-outline-info waves-effect instafilta-target"><i class="fa fa-image" aria-hidden="true"></i></button>
+            <button type="submit" mdbWavesEffect class="btn waves-effect waves-light" style="background-color:#3f729b;">Spara</button>
+            <button  style="float: right; border: 2px solid #3f729b !important;background-color: transparent !important; color: #3f729b !important;" type="button" (click)="imgpicker.click()" mdbWavesEffect class="btn waves-effect instafilta-target"><i class="fa fa-image" aria-hidden="true"></i></button>
             <input type="file" #imgpicker (change)="onImgPicked($event)">
       </form>
   </mat-card>

@@ -28,6 +28,10 @@
   margin: 15px auto;
 }
 
+.pagination /deep/ .ngx-pagination .current {
+  background-color: #0277bd !important;
+}
+
 .view img {
   height: 205.48px;
 }
