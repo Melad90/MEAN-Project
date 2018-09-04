@@ -6,6 +6,7 @@ import { StartPageComponent } from "./startPage/startpage.component";
 import { NewsPageComponent } from "./NewsPage/news-page.component";
 import { OmOssComponent } from "./OmOss/om-oss.component";
 import { KontaktOssComponent } from "./KontaktOss/kontakt-oss.component";
+import { LoginFormComponent } from "./login/login.component";
 
 const routes: Routes = [
     { path: '', component: StartPageComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
     { path: 'edit/:postId', component: PostCreateComponent },
     { path: 'Nyhet/:postId', component: NewsPageComponent},
     { path: 'om-oss', component: OmOssComponent},
-    { path: 'kontakta-oss', component: KontaktOssComponent}
+    { path: 'kontakta-oss', component: KontaktOssComponent},
+    { path: 'login', component: LoginFormComponent}
 ];
 
 @NgModule({

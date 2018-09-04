@@ -1,0 +1,37 @@
+<section>
+
+    <div class="card" style="width: 25rem; margin-left: 40%; margin-top: 15%; margin-bottom: 20%;">
+      <div class="card-body">
+
+        <!--Header-->
+        <div class="form-header default-color" style="background-color:#3f729b !important; height: 75px; margin-top: -65px; border-radius: 3px; vertical-align: middle; text-align: center; padding: 5%; color: white;  ">
+          <h4>
+            <i class="fa fa-lock"></i> Logga in </h4>
+        </div>
+
+        <!--Body-->
+        <!-- Login form -->
+        <form [formGroup]="loginForm">        
+            <div class="md-form">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input mdbInputDirective type="email" id="form6" class="form-control" data-error="wrong email" data-success="right email" formControlName="email">
+            <label for="defaultForm-email">Epost</label>
+            </div>
+        
+            <div class="md-form">
+            <i class="fa fa-lock prefix grey-text"></i>
+            <input mdbInputDirective type="password" id="form2" class="form-control" data-error="wrong text" data-success="right text" formControlName="password">
+            <label for="defaultForm-pass">Lösenord</label>
+            </div>
+        
+            <div class="text-center">
+            <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Bekräfta" style="background-color: #3f729b !important;">
+            </div>
+        </form>
+  <!-- Login form -->
+
+      </div>
+
+    </div>
+
+  </section>
