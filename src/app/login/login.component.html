@@ -1,37 +1,49 @@
-<section>
-
-    <div class="card" style="width: 25rem; margin-left: 40%; margin-top: 15%; margin-bottom: 20%;">
-      <div class="card-body">
-
-        <!--Header-->
-        <div class="form-header default-color" style="background-color:#3f729b !important; height: 75px; margin-top: -65px; border-radius: 3px; vertical-align: middle; text-align: center; padding: 5%; color: white;  ">
-          <h4>
-            <i class="fa fa-lock"></i> Logga in </h4>
-        </div>
-
-        <!--Body-->
-        <!-- Login form -->
-        <form [formGroup]="loginForm">        
-            <div class="md-form">
-            <i class="fa fa-envelope prefix grey-text"></i>
-            <input mdbInputDirective type="email" id="form6" class="form-control" data-error="wrong email" data-success="right email" formControlName="email">
-            <label for="defaultForm-email">Epost</label>
-            </div>
-        
-            <div class="md-form">
-            <i class="fa fa-lock prefix grey-text"></i>
-            <input mdbInputDirective type="password" id="form2" class="form-control" data-error="wrong text" data-success="right text" formControlName="password">
-            <label for="defaultForm-pass">Lösenord</label>
-            </div>
-        
-            <div class="text-center">
-            <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Bekräfta" style="background-color: #3f729b !important;">
-            </div>
-        </form>
-  <!-- Login form -->
-
+<div class="spinner" *ngIf="isLoading"></div>
+<section *ngIf="!isLoading">
+  <div class="card" style="width: 25rem; margin-left: 40%; margin-top: 15%; margin-bottom: 20%;">
+    <div class="card-body">
+      <!--Header-->
+      <div class="form-header default-color" style="background-color:#3f729b !important; height: 75px; margin-top: -65px; border-radius: 3px; vertical-align: middle; text-align: center; padding: 5%; color: white;  ">
+        <h4>Logga in </h4>
       </div>
-
+      <!--Body-->
+      <!-- Login form -->
+      <!--<form (submit)="onLogin(loginForm)" #loginForm="ngForm" >        
+          <div class="md-form">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input mdbInputDirective type="email" name="email" ngModel #emailInput="ngModel" class="form-control" data-error="wrong text" data-success="ser bra ut!" >
+          <label for="defaultForm-email">Epost</label>
+          </div>
+          <div class="md-form">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input mdbInputDirective type="password" name="password" class="form-control" data-error="wrong text" data-success="ser bra ut!" ngModel #passwordInput="ngModel">
+          <label for="defaultForm-pass">Lösenord</label>
+          </div>
+      
+          <div class="text-center">
+          <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Bekräfta" style="background-color: #3f729b !important;">
+          </div>
+      </form>-->
+      <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+        <div class="md-form">
+          <i class="fa fa-envelope prefix" style="color: #3f729b !important;"></i>
+          <mat-form-field>
+            <input matInput type="email" name="email" ngModel #emailInput="ngModel" required email>
+            <mat-error *ngIf="emailInput.invalid">{{getErrorMessageEpost()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="md-form">
+          <i class="fa fa-lock prefix" style="color: #3f729b !important;font-size: 2.5rem;"></i>
+          <mat-form-field>
+            <input matInput type="password" name="password" ngModel #passwordInput="ngModel" required>
+            <mat-error *ngIf="passwordInput.invalid">{{getErrorMessagePassword()}}</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="text-center">
+            <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Bekräfta" style="background-color: #3f729b !important; margin-top: 30px;">
+          </div>
+      </form>
+      <!-- Login form -->
     </div>
-
-  </section>
+  </div>
+</section>

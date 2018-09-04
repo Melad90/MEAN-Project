@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'login-form',
@@ -8,10 +8,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 
 export class LoginFormComponent {
-    loginForm: FormGroup; constructor(private fb: FormBuilder) {
-        this.loginForm = fb.group({
-            'email': ['', Validators.required, Validators.email],
-            'password': ['', [Validators.required, Validators.minLength(8)]]
-          });
+    isLoading = false;
+    email = new FormControl('', [Validators.required, Validators.email]);
+    password = new FormControl('', [Validators.required]);
+    getErrorMessageEpost() {
+        return this.email.hasError('required') ? 'mata in Epost!' :
+            this.email.hasError('email') ? 'Epost är ogiltig!' :
+                '';
       }
+    getErrorMessagePassword() {
+    return this.password.hasError('required') ? 'mata in Lösenordet!' :
+            '';
+    }
+
+    onLogin(form: NgForm) {
+        
+    }
 }

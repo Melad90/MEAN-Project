@@ -2,18 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {PostCreateComponent} from './posts/post-create/post-create.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxEditorModule } from 'ngx-editor';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 
 import { 
   MatCardModule, 
   MatInputModule, 
   MatButtonModule, 
   MatToolbarModule, 
-  MatExpansionModule, 
-  MatProgressSpinnerModule, 
+  MatExpansionModule,  
   MatPaginatorModule 
 } from '@angular/material';
 import { AppComponent } from './app.component';
@@ -50,13 +50,13 @@ import { LoginFormComponent } from './login/login.component';
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatProgressSpinnerModule,
     MatPaginatorModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -65,6 +65,6 @@ import { LoginFormComponent } from './login/login.component';
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [PostsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
