@@ -1,0 +1,32 @@
+<div class="spinner" *ngIf="isLoading"></div>
+<section *ngIf="!isLoading">
+  <div class="card" style="width: 25rem; margin-left: 40%; margin-top: 15%; margin-bottom: 20%;">
+    <div class="card-body">
+      <!--Header-->
+      <div class="form-header default-color" style="background-color:#3f729b !important; height: 75px; margin-top: -65px; border-radius: 3px; vertical-align: middle; text-align: center; padding: 5%; color: white;  ">
+        <h4>Signup</h4>
+      </div>
+      <!--Body-->
+      <form (submit)="onSignup(SignupForm)" #SignupForm="ngForm">
+        <div class="md-form">
+          <i class="fa fa-envelope prefix" style="color: #3f729b !important;"></i>
+          <mat-form-field>
+            <input matInput type="email" name="email" ngModel #emailInput="ngModel" required email>
+            <mat-error *ngIf="emailInput.invalid">{{getErrorMessageEpost()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="md-form">
+          <i class="fa fa-lock prefix" style="color: #3f729b !important;font-size: 2.5rem;"></i>
+          <mat-form-field>
+            <input matInput type="password" name="password" ngModel #passwordInput="ngModel" required>
+            <mat-error *ngIf="passwordInput.invalid">{{getErrorMessagePassword()}}</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="text-center">
+            <input type="submit" mdbBtn color="default" sclass="waves-light" mdbWavesEffect value="Bekräfta" style="background-color: #3f729b !important; margin-top: 30px;">
+          </div>
+      </form>
+      <!-- Login form -->
+    </div>
+  </div>
+</section>

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
+import  { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'login-form',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'signup-form',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
 
-export class LoginFormComponent {
+export class SignupFormComponent {
     isLoading = false;
     email = new FormControl('', [Validators.required, Validators.email]);
     password = new FormControl('', [Validators.required]);
@@ -21,7 +22,11 @@ export class LoginFormComponent {
             '';
     }
 
-    onLogin(form: NgForm) {
-        
+    constructor(public authService: AuthService) {}
+    onSignup(form: NgForm) {
+        if(form.invalid) {
+            return;
+        }
+        this.authService.createUser(form.value.email, form.value.password);
     }
 }

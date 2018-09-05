@@ -29,7 +29,8 @@ import { NewsPageComponent } from './NewsPage/news-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { OmOssComponent } from './OmOss/om-oss.component';
 import { KontaktOssComponent } from './KontaktOss/kontakt-oss.component';
-import { LoginFormComponent } from './login/login.component';
+import { LoginFormComponent } from './auth/login/login.component';
+import { SignupFormComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { LoginFormComponent } from './login/login.component';
     FooterComponent,
     OmOssComponent,
     KontaktOssComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
