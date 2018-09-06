@@ -10,14 +10,14 @@ import { LoginFormComponent } from "./auth/login/login.component";
 import { SignupFormComponent } from "./auth/signup/signup.component";
 
 const routes: Routes = [
-    { path: '', component: StartPageComponent },
-    { path: 'Nyheter', component: PostListComponent },
+    { path: '', component: StartPageComponent, data: { title: 'Marnarsay'} },
+    { path: 'Nyheter', component: PostListComponent, data: { title: 'Nyheter'} },
     { path: 'create', component: PostCreateComponent } ,
     { path: 'edit/:postId', component: PostCreateComponent },
     { path: 'Nyhet/:postId', component: NewsPageComponent},
-    { path: 'om-oss', component: OmOssComponent},
-    { path: 'kontakta-oss', component: KontaktOssComponent},
-    { path: 'login', component: LoginFormComponent},
+    { path: 'om-oss', component: OmOssComponent, data: { title: 'Om oss'}},
+    { path: 'kontakta-oss', component: KontaktOssComponent, data: { title: 'Kontakta oss'}},
+    { path: 'login', component: LoginFormComponent, data: { title: 'logga in'}},
     { path: 'signup', component: SignupFormComponent}
 ];
 

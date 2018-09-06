@@ -22,7 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { PostsService } from './posts/posts.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { StartPageComponent } from './startPage/startpage.component';
 import { NewsPageComponent } from './NewsPage/news-page.component';
@@ -31,6 +31,7 @@ import { OmOssComponent } from './OmOss/om-oss.component';
 import { KontaktOssComponent } from './KontaktOss/kontakt-oss.component';
 import { LoginFormComponent } from './auth/login/login.component';
 import { SignupFormComponent } from './auth/signup/signup.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { SignupFormComponent } from './auth/signup/signup.component';
     TooltipModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [PostsService],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
