@@ -6,15 +6,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxEditorModule } from 'ngx-editor';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
-
 import { 
   MatCardModule, 
   MatInputModule, 
   MatButtonModule, 
   MatToolbarModule, 
   MatExpansionModule,  
-  MatPaginatorModule 
+  MatPaginatorModule,
+  MatSelectModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
@@ -32,6 +31,7 @@ import { KontaktOssComponent } from './KontaktOss/kontakt-oss.component';
 import { LoginFormComponent } from './auth/login/login.component';
 import { SignupFormComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     OmOssComponent,
     KontaktOssComponent,
     LoginFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +62,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     MatToolbarModule,
     MatExpansionModule,
     MatPaginatorModule,
+    MatSelectModule,
     HttpClientModule,
     NgxPaginationModule,
     NgxEditorModule,

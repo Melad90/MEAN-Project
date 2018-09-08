@@ -8,6 +8,7 @@ import { OmOssComponent } from "./OmOss/om-oss.component";
 import { KontaktOssComponent } from "./KontaktOss/kontakt-oss.component";
 import { LoginFormComponent } from "./auth/login/login.component";
 import { SignupFormComponent } from "./auth/signup/signup.component";
+import { AdminComponent } from "./admin/admin.component";
 
 const routes: Routes = [
     { path: '', component: StartPageComponent, data: { title: 'Marnarsay'} },
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'om-oss', component: OmOssComponent, data: { title: 'Om oss'}},
     { path: 'kontakta-oss', component: KontaktOssComponent, data: { title: 'Kontakta oss'}},
     { path: 'login', component: LoginFormComponent, data: { title: 'logga in'}},
-    { path: 'signup', component: SignupFormComponent}
+    { path: 'signup', component: SignupFormComponent},
+    { path: 'admin', component: AdminComponent, data: { title: 'Admin'}}
 ];
 
 @NgModule({

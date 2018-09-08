@@ -1,0 +1,46 @@
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: initial;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #404f9f !important;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 140px;
+    background-image: url(https://mdbootstrap.com/img/Photos/Others/sidenav1.jpg);
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    margin-left: 40px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+
+  .row .col-2 {
+      margin-left: 0px;
+      margin-right: 0px;
+  }
