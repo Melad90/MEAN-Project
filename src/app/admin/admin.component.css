@@ -1,3 +1,8 @@
+.col-7 .col-3 {
+    background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
 .sidenav {
     height: 100%;
     width: 250px;
@@ -27,20 +32,28 @@
   .sidenav a {font-size: 18px;}
 }
 
+/*Profile*/
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
     margin: auto;
     text-align: center;
     font-family: arial;
-  }
-  
-  .title {
-    color: grey;
-    font-size: 18px;
-  }
-
-  .row .col-2 {
-      margin-left: 0px;
-      margin-right: 0px;
-  }
+}
+.row .col-2 {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.profile-card .avatar {
+    max-width: 150px;
+    max-height: 150px;
+    margin: -70px auto 0;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+img.rounded-circle {
+    max-width: 150px;
+}
+section.team-section .avatar img {
+   height: auto;
+}

@@ -16,6 +16,7 @@
 
 .card {
   position: inherit;
+  border: 0px;
 }
 .col-md-4 {
   margin: 2% 0px;

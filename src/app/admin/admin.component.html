@@ -2,7 +2,7 @@
     <div class="col-2"><div id="mySidenav" class="sidenav">
             <h3 style="margin-left: 60px; color: white; padding-top: 20px;">Nyheter</h3>
             <hr style="border-top: 1px solid white">
-            <a>Skapa</a>
+            <a routerLink="/create">Skapa</a>
             <a>Redigera</a>
             <h3 style="margin-left: 60px; color: white; padding-top: 30px;">Event</h3>
             <hr style="border-top: 1px solid white">
@@ -10,14 +10,21 @@
             <a>Redigera</a>
       </div></div>
     <div class="col-7" style="margin-top: 12%;">
-
+        
     </div>
     <div class="col-3" style="margin-top:12%; float: left;">
-        <div class="card">
-            <img src="https://www.w3schools.com/howto/img_avatar.png" alt="John" style="width:100%">
-            <h1>Admin</h1>
-            <p class="title">Teknik Guy</p>
-            <p>Hello World!</p>
+        <!--Card-->
+        <div class="card profile-card wow rotateInUpRight">
+            <!--Avatar-->
+            <div class="avatar z-depth-1-half mb-4">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle" alt="First sample avatar image">
+            </div>
+            <div class="card-body pt-0 mt-0">
+                <!--Name-->
+                <h4 class="mb-3 font-weight-bold"><strong>Anna Deynah</strong></h4>
+                <h6 class="font-weight-bold cyan-text mb-4">Web Designer</h6>
+            </div>
         </div>
+        <!--Card-->
     </div>  
 </div>
