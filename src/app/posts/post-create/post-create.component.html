@@ -1,28 +1,47 @@
-<div class="card card-body">
-  <mat-card>
-    <mdb-spinner spinnerType="big" spinnerColor="blue" *ngIf="isLoading"></mdb-spinner>
-      <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
-          <div class="md-form">
-              <input mdbInputDirective type="text" class="form-control" formControlName="rubrik">
-              <label for="form1" class="">Rubrik</label> 
-              <div *ngIf="form.get('rubrik').invalid" style="color: red;">obligatoriskt fält!</div>
-          </div>
-          <div class="md-form">
-              <input mdbInputDirective type="text" class="form-control" formControlName="ingress">
-              <label for="form1" class="">Ingress</label>
-              <div *ngIf="form.get('ingress').invalid" style="color: red;">obligatoriskt fält!</div>
-          </div>
-          <div class="md-form">
-                <app-ngx-editor [config]="editorConfig" [spellcheck]="true" formControlName="innehall"></app-ngx-editor>
-              
-              <div *ngIf="form.get('innehall').invalid" style="color: red;">obligatoriskt fält!</div>
-          </div>
-          <div class="img-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
-            <img formControlName="image" [src]="imagePreview" [alt]="form.value.rubrik">
-          </div>
-            <button type="submit" mdbWavesEffect class="btn waves-effect waves-light" style="background-color:#3f729b;">Spara</button>
-            <button  style="float: right; border: 2px solid #3f729b !important;background-color: transparent !important; color: #3f729b !important;" type="button" (click)="imgpicker.click()" mdbWavesEffect class="btn waves-effect instafilta-target"><i class="fa fa-image" aria-hidden="true"></i></button>
-            <input type="file" #imgpicker (change)="onImgPicked($event)">
-      </form>
-  </mat-card>
+<div class="row" style="height: 1200px; margin-right: 0px;">
+  <div class="col-2"><div id="mySidenav" class="sidenav">
+    <h3 style="margin-left: 60px; color: white; padding-top: 20px;">Nyheter</h3>
+    <hr style="border-top: 1px solid white">
+    <a routerLink="/create">Skapa</a>
+    <a>Redigera</a>
+    <h3 style="margin-left: 60px; color: white; padding-top: 30px;">Event</h3>
+    <hr style="border-top: 1px solid white">
+    <a>Skapa</a>
+    <a>Redigera</a>
+    <h3 style="margin-left: 60px; color: white; padding-top: 30px;">Media</h3>
+    <hr style="border-top: 1px solid white">
+    <a>Skapa</a>
+    <a>Redigera</a>
+  </div></div>
+  <div class="col-10">
+  <div class="card card-body">
+      <h3 style="margin-bottom: 3%; margin-top: -10%;">Skapa en nyhet</h3>
+    <mat-card>
+      <mdb-spinner spinnerType="big" spinnerColor="blue" *ngIf="isLoading"></mdb-spinner>
+        <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+            <div class="md-form">
+                <input mdbInputDirective type="text" class="form-control" formControlName="rubrik">
+                <label for="form1" class="">Rubrik</label> 
+                <div *ngIf="form.get('rubrik').invalid" style="color: red;">obligatoriskt fält!</div>
+            </div>
+            <div class="md-form">
+                <input mdbInputDirective type="text" class="form-control" formControlName="ingress">
+                <label for="form1" class="">Ingress</label>
+                <div *ngIf="form.get('ingress').invalid" style="color: red;">obligatoriskt fält!</div>
+            </div>
+            <div class="md-form">
+                  <app-ngx-editor [config]="editorConfig" [spellcheck]="true" formControlName="innehall"></app-ngx-editor>
+                
+                <div *ngIf="form.get('innehall').invalid" style="color: red;">obligatoriskt fält!</div>
+            </div>
+            <div class="img-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+              <img formControlName="image" [src]="imagePreview" [alt]="form.value.rubrik">
+            </div>
+              <button type="submit" mdbWavesEffect class="btn waves-effect waves-light" style="background-color:#3f729b;">Spara</button>
+              <button  style="float: right; border: 2px solid #3f729b !important;background-color: transparent !important; color: #3f729b !important;" type="button" (click)="imgpicker.click()" mdbWavesEffect class="btn waves-effect instafilta-target"><i class="fa fa-image" aria-hidden="true"></i></button>
+              <input type="file" #imgpicker (change)="onImgPicked($event)">
+        </form>
+    </mat-card>
+  </div>
+  </div>
 </div>

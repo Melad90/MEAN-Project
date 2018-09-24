@@ -15,7 +15,7 @@
 <div class="py-5">
   <div class="container" *ngIf="posts.length > 0 && !isLoading">
     <div class="row hidden-md-up">
-      <div class="col-md-4" *ngFor="let post of posts | paginate: { itemsPerPage: 10, currentPage: p }">
+      <div class="col-md-4" *ngFor="let post of posts | paginate: { itemsPerPage: 12, currentPage: p }">
         <div class="card">
           <div class="card-block">
               <div class="view overlay">
