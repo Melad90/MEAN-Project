@@ -1,0 +1,35 @@
+<div class="row" style="min-height: 1200px; margin-right: 0px;">
+    <div class="col-2">
+        <div id="mySidenav" class="sidenav">
+            <h3 style="margin-left: 60px; color: white; padding-top: 20px;">Nyheter</h3>
+            <hr style="border-top: 1px solid white">
+            <a routerLink="/admin/nyheter/skapa">Skapa</a>
+            <a routerLink="/admin/nyheter/redigera">Redigera</a>
+            <h3 style="margin-left: 60px; color: white; padding-top: 30px;">Event</h3>
+            <hr style="border-top: 1px solid white">
+            <a>Skapa</a>
+            <a>Redigera</a>
+            <h3 style="margin-left: 60px; color: white; padding-top: 30px;">Media</h3>
+            <hr style="border-top: 1px solid white">
+            <a>Skapa</a>
+            <a>Redigera</a>
+        </div>
+    </div>
+    <div class="col-10">
+        <div class="spinner" *ngIf="isLoading"></div>
+        <div style="margin-top: 10rem; margin-bottom: 10rem;">
+            <mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
+                <mat-expansion-panel style="width: 80%; margin: 15px auto" *ngFor="let post of posts">
+                    <mat-expansion-panel-header style="font-size: larger; font-weight: 500;">
+                    {{ post?.rubrik }}
+                    </mat-expansion-panel-header>
+                    <div innerHTML="{{ post?.innehall }}"></div>
+                    <mat-action-row>
+                        <a mat-button color="primary"><i class="material-icons" [routerLink]="['/admin/nyheter/redigera', post.id]">edit</i></a>
+                        <a mat-button color="warn"(click)="onDelete(post.id)"><i class="material-icons">delete_forever</i></a>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

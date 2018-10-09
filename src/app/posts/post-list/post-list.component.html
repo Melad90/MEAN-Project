@@ -1,16 +1,3 @@
-<!--<mat-spinner *ngIf="isLoading"></mat-spinner>-->
-<mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
-  <mat-expansion-panel style="margin-bottom: 20px; width: 80%; margin: 15px auto;" *ngFor="let post of posts">
-    <mat-expansion-panel-header style="font-size: larger; font-weight: 500;">
-      {{ post.rubrik }}
-    </mat-expansion-panel-header>
-    <p>{{ post.innehall }}</p>
-    <mat-action-row>
-        <a mat-button color="primary"><i class="material-icons" [routerLink]="['/edit', post.id]">edit</i></a>
-        <a mat-button color="warn"(click)="onDelete(post.id)"><i class="material-icons">delete_forever</i></a>
-      </mat-action-row>
-  </mat-expansion-panel>
-</mat-accordion>
 <div class="spinner" *ngIf="isLoading"></div>
 <div class="py-5">
   <div class="container" *ngIf="posts.length > 0 && !isLoading">

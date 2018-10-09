@@ -4,3 +4,7 @@
     width: 100%;    
     clear: both;
 }
+
+.page-footer a:hover{
+    text-decoration: none;
+}

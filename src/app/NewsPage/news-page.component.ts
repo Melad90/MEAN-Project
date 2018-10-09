@@ -15,6 +15,7 @@ export class NewsPageComponent implements OnInit{
     constructor (public postService: PostsService, public route: ActivatedRoute) {}
 
     ngOnInit() {
+        let Arabic = /^([\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f]|[\ufd50-\ufd8f]|[\ufd92-\ufdc7]|[\ufe70-\ufefc]|[\ufdf0-\ufdfd]|[ ])*$/g;
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
             if(paramMap.has('postId')) {
                 this.postId = paramMap.get('postId');
@@ -25,7 +26,11 @@ export class NewsPageComponent implements OnInit{
                         rubrik: postData.rubrik, 
                         ingress: postData.ingress, 
                         innehall: postData.innehall,
-                        imagePath: postData.imagePath};
+                        imagePath: postData.imagePath
+                    };
+                    if(Arabic.test(this.post.rubrik) === true){
+                        console.log(this.post.rubrik);
+                    }
                 });
             }
         });

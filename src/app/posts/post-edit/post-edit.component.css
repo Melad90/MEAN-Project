@@ -1,0 +1,67 @@
+.spinner {
+    width: 40px;
+    height: 40px;
+    background-color: #3f729b !important;
+  
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
+  }
+@-webkit-keyframes sk-rotateplane {
+0% { -webkit-transform: perspective(120px) }
+50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+} 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+} 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+}
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: initial;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #404f9f !important;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 140px;
+    background-image: url(https://mdbootstrap.com/img/Photos/Others/sidenav1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    margin-left: 40px;
+  }
+  
+  @media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  }
+  
+  .col-2 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  

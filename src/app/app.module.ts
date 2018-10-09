@@ -32,6 +32,7 @@ import { LoginFormComponent } from './auth/login/login.component';
 import { SignupFormComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { AdminComponent } from './admin/admin.component';
+import { PostEditComponent } from './posts/post-edit/post-edit.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AdminComponent } from './admin/admin.component';
     KontaktOssComponent,
     LoginFormComponent,
     SignupFormComponent,
-    AdminComponent
+    AdminComponent,
+    PostEditComponent
   ],
   imports: [
     BrowserModule,

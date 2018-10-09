@@ -2,8 +2,8 @@
   <div class="col-2"><div id="mySidenav" class="sidenav">
     <h3 style="margin-left: 60px; color: white; padding-top: 20px;">Nyheter</h3>
     <hr style="border-top: 1px solid white">
-    <a routerLink="/create">Skapa</a>
-    <a>Redigera</a>
+    <a routerLink="/admin/nyheter/skapa">Skapa</a>
+    <a routerLink="/admin/nyheter/redigera">Redigera</a>
     <h3 style="margin-left: 60px; color: white; padding-top: 30px;">Event</h3>
     <hr style="border-top: 1px solid white">
     <a>Skapa</a>
@@ -15,7 +15,7 @@
   </div></div>
   <div class="col-10">
   <div class="card card-body">
-      <h3 style="margin-bottom: 3%; margin-top: -10%;">Skapa en nyhet</h3>
+      <h3 style="margin-bottom: 3%; margin-top: -10%;">Skapa/Redigera en nyhet</h3>
     <mat-card>
       <mdb-spinner spinnerType="big" spinnerColor="blue" *ngIf="isLoading"></mdb-spinner>
         <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
