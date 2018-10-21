@@ -4,6 +4,8 @@ import { PostsService } from '../posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../post.model';
 import { mimeType } from './mime-type.validator';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-post-create',
@@ -30,9 +32,17 @@ export class PostCreateComponent implements OnInit {
 
   htmlContent = '<p>Hi</p>';
 
-  constructor(public postsService: PostsService, public route: ActivatedRoute) { }
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
+
+  constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated =>{
+      this.userIsAuthenticated = isAuthenticated;
+    });
     this.form = new FormGroup({
       'rubrik': new FormControl(null, {
         validators: [ Validators.required, Validators.minLength(5)]
@@ -83,12 +93,13 @@ export class PostCreateComponent implements OnInit {
     this.form.get('image').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = reader.result;
+      this.imagePreview = <string>reader.result;
     };
     reader.readAsDataURL(file);
   }
 
   onSavePost() {
+    this.authListenerSubs.unsubscribe();
     if (this.form.invalid) {
       return;
     }

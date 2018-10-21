@@ -40,11 +40,13 @@ const storage = multer.diskStorage({
 
 routes.post('', checkAuth, multer({storage: storage}).single('image'), (req, res, next) => {
     const url = req.protocol + '://' + req.get('host');
+    console.log(dataformat)
     const post = new Post({
         rubrik: req.body.rubrik,
         ingress: req.body.ingress,
         innehall: req.body.innehall,
-        imagePath:  url + '/images/' + req.file.filename
+        imagePath:  url + '/images/' + req.file.filename,
+        skapadav:req.userData.userId
     });
     post.save().then(result => {
         res.status(201).json({
@@ -71,8 +73,10 @@ routes.put('/:id', checkAuth, multer({storage: storage}).single('image'), (req, 
         rubrik: req.body.rubrik,
         ingress: req.body.ingress,
         innehall: req.body.innehall,
-        imagePath: imagePath
+        imagePath: imagePath,
+        skapadav:req.userData.userId
     });
+    retu
     Post.updateOne({_id: req.params.id}, post).then(result => {
         res.status(200).json({message: 'Update Successful!'});
     });
@@ -89,7 +93,7 @@ routes.get('/:id', (req, res, next) => {
 });
 
 routes.get('', (req, res, next) => {
-    Post.find().then(documents => {
+    Post.find().sort({rubrik: -1}).then(documents => {
         res.status(200).json({
             message: 'Posts fetched succesfully!',
             posts: documents

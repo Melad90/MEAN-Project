@@ -21,7 +21,8 @@ export class PostsService {
                     ingress: post.ingress,
                     innehall: post.innehall,
                     id: post._id,
-                    imagePath: post.imagePath
+                    imagePath: post.imagePath,
+                    skapadav: post.skapadav
                 };
             });
        }))
