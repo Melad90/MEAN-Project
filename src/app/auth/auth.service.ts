@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
 export class AuthService {
     private isAuthenticated = false;
     private token: string;
-    private tokenTimer: NodeJS.Timer;
+    private tokenTimer: any;
     private authStatusListener = new Subject<boolean>();
 
     constructor(private http: HttpClient, private router: Router) {}

@@ -5,6 +5,7 @@ import {PostCreateComponent} from './posts/post-create/post-create.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxEditorModule } from 'ngx-editor';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { 
   MatCardModule, 
@@ -68,6 +69,7 @@ import { PostEditComponent } from './posts/post-edit/post-edit.component';
     HttpClientModule,
     NgxPaginationModule,
     NgxEditorModule,
+    AngularEditorModule,
     TooltipModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
