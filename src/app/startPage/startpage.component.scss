@@ -5,9 +5,34 @@
     //margin-top: -7% !important;
   }
 
+  .kort {
+    height: 35rem; 
+    margin-bottom: 15px;
+    border: 2px solid rgba(56, 151, 188, 0.1);
+    border-radius: 0.5rem;
+    padding: 0px 15px;
+  }
+  .kort:hover{
+    background-color: rgba(56, 151, 188, 0.1);
+  }
+  .flex-center{
+    height: 0%;
+  }
+
 @media only screen and (min-width: 260px) and (max-width: 400px) {
-.display-1 {
-  font-size: 3rem;
+  .display-1 {
+    font-size: 3rem;
+    }
+  .kort {
+    margin-left: 15px;
+  }
+  .col-sm-4 {
+    padding-left: 0px;
+    flex: unset;
+    max-width: 100%;
+  }
+  .intro-info-content {
+    margin-bottom: 50%;
   }
 }
 
@@ -15,4 +40,15 @@
   .display-1 {
     font-size: 4rem;
     }
+  .kort {
+    margin-left: 15px;
   }
+  .col-sm-4 {
+    padding-left: 0px;
+    flex: unset;
+    max-width: 100%;
+  }
+  .intro-info-content {
+    margin-bottom: 50%;
+  }
+}
