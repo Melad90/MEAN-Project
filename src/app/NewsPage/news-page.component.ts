@@ -11,6 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class NewsPageComponent implements OnInit{
     private postId: string;
     post: Post;
+    ArPost: Post;
 
     constructor (public postService: PostsService, public route: ActivatedRoute) {}
 
@@ -30,6 +31,13 @@ export class NewsPageComponent implements OnInit{
                     };
                     if(Arabic.test(this.post.rubrik) === true){
                         console.log(this.post.rubrik);
+                        this.ArPost = {
+                            id: this.post.id,
+                            rubrik: this.post.rubrik,
+                            ingress: this.post.ingress,
+                            innehall: this.post.innehall,
+                            imagePath: this.post.imagePath
+                        };
                     }
                 });
             }
