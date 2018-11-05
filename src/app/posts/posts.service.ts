@@ -22,7 +22,7 @@ export class PostsService {
                     innehall: post.innehall,
                     id: post._id,
                     imagePath: post.imagePath,
-                    skapadav: post.skapadav
+                    creator: post.creator
                 };
             });
        }))
@@ -37,7 +37,7 @@ export class PostsService {
     }
 
     getPost(id: string) {
-        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string, imagePath: string}>(
+        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string, imagePath: string, creator: string}>(
             'http://localhost:3000/api/posts/' + id
         );
     }
@@ -66,7 +66,8 @@ export class PostsService {
                 rubrik: rubrik,
                 ingress: ingress,
                 innehall: innehall,
-                imagePath: image 
+                imagePath: image,
+                creator: null
             };
         }
 
@@ -79,7 +80,8 @@ export class PostsService {
                 rubrik: rubrik,
                 ingress: ingress,
                 innehall: innehall,
-                imagePath: ""
+                imagePath: "",
+                creator: null
             }
             updatedPosts[oldPostsIndex] = post;
             this.posts = updatedPosts;
@@ -97,7 +99,7 @@ export class PostsService {
         this.httpClient
         .post<{message: string, post: Post }>('http://localhost:3000/api/posts', formData)
         .subscribe(responseData => {
-            const post: Post = {id: responseData.post.id, rubrik: rubrik, ingress: ingress, innehall: innehall, imagePath: responseData.post.imagePath};
+            const post: Post = {id: responseData.post.id, rubrik: rubrik, ingress: ingress, innehall: innehall, imagePath: responseData.post.imagePath, creator: responseData.post.creator};
             this.posts.push(post);
             this.PostsUpdated.next([...this.posts]);
             this.router.navigate(['/']);

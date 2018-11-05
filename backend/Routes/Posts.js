@@ -40,13 +40,12 @@ const storage = multer.diskStorage({
 
 routes.post('', checkAuth, multer({storage: storage}).single('image'), (req, res, next) => {
     const url = req.protocol + '://' + req.get('host');
-    console.log(dataformat)
     const post = new Post({
         rubrik: req.body.rubrik,
         ingress: req.body.ingress,
         innehall: req.body.innehall,
         imagePath:  url + '/images/' + req.file.filename,
-        skapadav:req.userData.userId
+        creator: req.userData.userId
     });
     post.save().then(result => {
         res.status(201).json({
@@ -74,11 +73,14 @@ routes.put('/:id', checkAuth, multer({storage: storage}).single('image'), (req, 
         ingress: req.body.ingress,
         innehall: req.body.innehall,
         imagePath: imagePath,
-        skapadav:req.userData.userId
+        creator: req.userData.userId
     });
-    retu
-    Post.updateOne({_id: req.params.id}, post).then(result => {
-        res.status(200).json({message: 'Update Successful!'});
+    Post.updateOne({_id: req.params.id, creator: req.userData.userId }, post).then(result => {
+        if (result.nModified > 0 ){
+            res.status(200).json({message: 'Update Successful!'});
+        } else {
+            res.status(401).json({message: 'Not Authorized!'});
+        }
     });
 });
 
@@ -102,8 +104,13 @@ routes.get('', (req, res, next) => {
 });
 
 routes.delete('/:id', checkAuth, (req, res, next) => {
-    Post.deleteOne({_id: req.params.id}).then(result => {
-        res.status(200).json({message: 'Post deleted'});
+    Post.deleteOne({_id: req.params.id, creator: req.userData.userId}).then(result => {
+        if (result.n > 0 ) {
+            res.status(200).json({message: 'Deletion success!'});
+        } else {
+            res.status(401).json({message: 'Not Authorized!'});
+        }
+        
     });
 });
 

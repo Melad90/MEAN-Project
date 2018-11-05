@@ -34,6 +34,7 @@ import { SignupFormComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,10 @@ import { PostEditComponent } from './posts/post-edit/post-edit.component';
     TooltipModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -9,6 +9,7 @@
             <img [src]="post?.imagePath" [alt]="post?.rubrik">
             <div class="card-text" innerHTML="{{ post?.innehall }}"></div>
         </div>
+        <h6>{{post?.creator}}</h6>
 </div>
 
 <div dir="rtl" lang="ar" class="card card-body" style="border:0px;" *ngIf="ArPost">

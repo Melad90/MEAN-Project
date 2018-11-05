@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/auth/auth.service';
      posts: Post[] = [];
      isLoading = false;
      userIsAuthenticated = false;
+     userId: string;
      private authListenerSubs: Subscription;
      private postsSub: Subscription;
      constructor(public postsService: PostsService, private authService: AuthService) {}
@@ -21,6 +22,7 @@ import { AuthService } from 'src/app/auth/auth.service';
      ngOnInit() {
          this.postsService.getPosts();
          this.isLoading = true;
+         this.userId = this.authService.getUserId();
          this.postsSub = this.postsService.getPostUpdate().subscribe((posts: Post[]) => {
             this.isLoading = false;
             this.posts = posts;
@@ -28,6 +30,7 @@ import { AuthService } from 'src/app/auth/auth.service';
          this.userIsAuthenticated = this.authService.getIsAuth();
          this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
             this.userIsAuthenticated = isAuthenticated;
+            this.userId = this.authService.getUserId();
         })
      }
 

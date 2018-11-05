@@ -4,4 +4,5 @@ export interface Post {
     ingress: string;
     innehall: string;
     imagePath: string;
+    creator: string;
 }

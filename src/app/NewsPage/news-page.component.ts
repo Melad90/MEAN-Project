@@ -27,7 +27,8 @@ export class NewsPageComponent implements OnInit{
                         rubrik: postData.rubrik, 
                         ingress: postData.ingress, 
                         innehall: postData.innehall,
-                        imagePath: postData.imagePath
+                        imagePath: postData.imagePath,
+                        creator: postData.creator
                     };
                     if(Arabic.test(this.post.rubrik) === true){
                         console.log(this.post.rubrik);
@@ -36,7 +37,8 @@ export class NewsPageComponent implements OnInit{
                             rubrik: this.post.rubrik,
                             ingress: this.post.ingress,
                             innehall: this.post.innehall,
-                            imagePath: this.post.imagePath
+                            imagePath: this.post.imagePath,
+                            creator: this.post.creator
                         };
                     }
                 });

@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema({
     ingress: { type: String, required: true },
     innehall: {type: String, required: true },
     imagePath: {type: String, required: true},
-    skapadav: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
+    creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
 module.exports = mongoose.model('Post', postSchema);

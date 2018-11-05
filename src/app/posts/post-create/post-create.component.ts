@@ -23,7 +23,7 @@ export class PostCreateComponent implements OnInit {
 
   editorConfig = {
     editable: true,
-    spellcheck: false,
+    spellcheck: true,
     height: '10rem',
     minHeight: '5rem',
     placeholder: 'Mata in innehållet',
@@ -53,7 +53,7 @@ export class PostCreateComponent implements OnInit {
       'innehall': new FormControl(null, 
         {validators: [Validators.required, Validators.minLength(20)]
       }),
-      'image': new FormControl(null, {
+      image: new FormControl(null, {
         validators: [Validators.required], asyncValidators: [mimeType]
       })
     });
@@ -69,13 +69,14 @@ export class PostCreateComponent implements OnInit {
             rubrik: postData.rubrik, 
             ingress: postData.ingress, 
             innehall: postData.innehall, 
-            imagePath: postData.imagePath
+            imagePath: postData.imagePath,
+            creator: postData.creator
           };
           this.form.setValue({
             'rubrik': this.post.rubrik,
             'ingress': this.post.ingress,
             'innehall': this.post.innehall,
-            'image': this.post.imagePath
+            image: this.post.imagePath
           });
         });
       } else {
@@ -87,13 +88,11 @@ export class PostCreateComponent implements OnInit {
 
   onImgPicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({
-      image: file
-    });
+    this.form.patchValue({image: file});
     this.form.get('image').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = <string>reader.result;
+      this.imagePreview = <String>reader.result;
     };
     reader.readAsDataURL(file);
   }
