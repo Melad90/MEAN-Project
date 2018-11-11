@@ -26,7 +26,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     }
     getErrorMessageEpost() {
         return this.email.hasError('required') ? 'mata in Epost!' :
-            this.email.hasError('email') ? 'Epost är ogiltig!' :
+            this.email.hasError('email') ? 'Ogiltigt E-post format!' :
                 '';
     }
     getErrorMessagePassword() {

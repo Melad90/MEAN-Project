@@ -8,9 +8,11 @@ mat-error{
     color: red;
     font-size: 12px;
 }
-
+.mat-form-field /deep/ .mat-form-field-underline{
+    bottom: 1.7em !important;
+}
 .md-form .prefix{
-    top: 1.55rem;
+    top: 3.45rem;
 }
 .spinner {
     width: 80px;

@@ -14,7 +14,7 @@ export class LoginFormComponent {
     password = new FormControl('', [Validators.required]);
     getErrorMessageEpost() {
         return this.email.hasError('required') ? 'mata in Epost!' :
-            this.email.hasError('email') ? 'Epost är ogiltig!' :
+            this.email.hasError('email') ? 'Ogiltigt E-post format!' :
                 '';
       }
     getErrorMessagePassword() {
