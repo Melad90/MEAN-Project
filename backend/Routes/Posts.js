@@ -58,6 +58,11 @@ routes.post('', checkAuth, multer({storage: storage}).single('image'), (req, res
                 imagePath: result.imagePath
             }
         });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Skapandet av post misslyckades!'
+        }); 
     });
 });
 
@@ -81,6 +86,11 @@ routes.put('/:id', checkAuth, multer({storage: storage}).single('image'), (req, 
         } else {
             res.status(401).json({message: 'Not Authorized!'});
         }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'kunde inte uppdatera post!'
+        });
     });
 });
 
@@ -91,6 +101,11 @@ routes.get('/:id', (req, res, next) => {
         } else {
             res.status(404).json({message: 'Post not found!'});
         }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
+        });
     });
 });
 
@@ -99,6 +114,11 @@ routes.get('', (req, res, next) => {
         res.status(200).json({
             message: 'Posts fetched succesfully!',
             posts: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
         });
     });
 });
@@ -110,7 +130,11 @@ routes.delete('/:id', checkAuth, (req, res, next) => {
         } else {
             res.status(401).json({message: 'Not Authorized!'});
         }
-        
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
+        });
     });
 });
 

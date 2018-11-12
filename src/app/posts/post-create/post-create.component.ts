@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { PostsService } from '../posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./post-create.component.css']
 })
 
-export class PostCreateComponent implements OnInit {
+export class PostCreateComponent implements OnInit, OnDestroy {
   isLoading = false;
   private mode = 'create';
   private postId: string;
@@ -42,6 +42,7 @@ export class PostCreateComponent implements OnInit {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated =>{
       this.userIsAuthenticated = isAuthenticated;
+      this.isLoading = false;
     });
     this.form = new FormGroup({
       'rubrik': new FormControl(null, {
@@ -109,5 +110,9 @@ export class PostCreateComponent implements OnInit {
       this.postsService.updatePost(this.postId, this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall, this.form.value.image);
     }
     this.form.reset();
+  }
+
+  ngOnDestroy(){
+    this.authListenerSubs.unsubscribe();
   }
 }
