@@ -7,16 +7,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { NgxEditorModule } from 'ngx-editor';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { 
-  MatCardModule, 
-  MatInputModule, 
-  MatButtonModule, 
-  MatToolbarModule, 
-  MatExpansionModule,  
-  MatPaginatorModule,
-  MatSelectModule,
-  MatDialogModule,
-} from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +28,7 @@ import { AdminComponent } from './admin/admin.component';
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -63,18 +55,11 @@ import { ErrorComponent } from './error/error.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatPaginatorModule,
-    MatSelectModule,
-    MatDialogModule,
     HttpClientModule,
     NgxPaginationModule,
     NgxEditorModule,
     AngularEditorModule,
+    AngularMaterialModule,
     TooltipModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],

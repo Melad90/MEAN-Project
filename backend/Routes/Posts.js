@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const multer = require('multer');
-const Post = require('../models/post');
+const postController = require('../controllers/posts');
 const checkAuth = require('../middleware/check-auth');
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -38,104 +38,14 @@ const storage = multer.diskStorage({
     }
 });
 
-routes.post('', checkAuth, multer({storage: storage}).single('image'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host');
-    const post = new Post({
-        rubrik: req.body.rubrik,
-        ingress: req.body.ingress,
-        innehall: req.body.innehall,
-        imagePath:  url + '/images/' + req.file.filename,
-        creator: req.userData.userId
-    });
-    post.save().then(result => {
-        res.status(201).json({
-            message: 'perfect!',
-            post: {
-                id: result._id,
-                rubrik: result.rubrik,
-                ingress: result.ingress,
-                innehall: result.innehall,
-                imagePath: result.imagePath
-            }
-        });
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Skapandet av post misslyckades!'
-        }); 
-    });
-});
+routes.post('', checkAuth, multer({storage: storage}).single('image'), postController.createPost);
 
-routes.put('/:id', checkAuth, multer({storage: storage}).single('image'), (req, res, next) => {
-    let imagePath = req.body.imagePath;
-    if (req.file) {
-        const url = req.protocol + '://' + req.get('host');
-        imagePath = url + '/images/' + req.file.fieldname;
-    }
-    const post = new Post({
-        _id: req.body.id,
-        rubrik: req.body.rubrik,
-        ingress: req.body.ingress,
-        innehall: req.body.innehall,
-        imagePath: imagePath,
-        creator: req.userData.userId
-    });
-    Post.updateOne({_id: req.params.id, creator: req.userData.userId }, post).then(result => {
-        if (result.nModified > 0 ){
-            res.status(200).json({message: 'Update Successful!'});
-        } else {
-            res.status(401).json({message: 'Not Authorized!'});
-        }
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'kunde inte uppdatera post!'
-        });
-    });
-});
+routes.put('/:id', checkAuth, multer({storage: storage}).single('image'), postController.updatePost);
 
-routes.get('/:id', (req, res, next) => {
-    Post.findById(req.params.id).then(post => {
-        if (post) {
-            res.status(200).json(post);
-        } else {
-            res.status(404).json({message: 'Post not found!'});
-        }
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching posts failed!'
-        });
-    });
-});
+routes.get('/:id', postController.getSinglePost);
 
-routes.get('', (req, res, next) => {
-    Post.find().sort({rubrik: -1}).then(documents => {
-        res.status(200).json({
-            message: 'Posts fetched succesfully!',
-            posts: documents
-        });
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching posts failed!'
-        });
-    });
-});
+routes.get('', postController.getAllPost);
 
-routes.delete('/:id', checkAuth, (req, res, next) => {
-    Post.deleteOne({_id: req.params.id, creator: req.userData.userId}).then(result => {
-        if (result.n > 0 ) {
-            res.status(200).json({message: 'Deletion success!'});
-        } else {
-            res.status(401).json({message: 'Not Authorized!'});
-        }
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching posts failed!'
-        });
-    });
-});
+routes.delete('/:id', checkAuth, postController.deletePost);
 
 module.exports = routes;

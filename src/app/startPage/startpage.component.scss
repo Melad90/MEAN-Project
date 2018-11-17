@@ -18,7 +18,69 @@
   .flex-center{
     height: 0%;
   }
+  .col-md-4 {
+    margin-bottom: 20%;
+  }
+  .carousel-multi-item /deep/ .controls-top{
+    //display: none !important;
+    text-align: center;
+  }
+  .carousel-multi-item /deep/ .carousel-indicators{
+    display: none !important;
+  }
+  .carousel-multi-item /deep/ .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: white;
+    text-align: center;
+    margin: auto;
+    margin-top: 15px;
+}
 
+  .carousel-multi-item /deep/ .btn-floating {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    width: 47px;
+    height: 47px;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    margin: 10px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    padding: 0;
+    cursor: pointer;
+    background-color: #3f729b;
+}
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+  .carousel-multi-item /deep/ #NyBtn:hover {
+    color: white !important;
+  }
+  .carousel-multi-item .carousel-indicators li {
+    height: 1.25rem;
+    width: 1.25rem;
+    max-width: 1.25rem;
+    background-color: #3f729b;
+    margin-bottom: -3.75rem;
+  }
 @media only screen and (min-width: 260px) and (max-width: 400px) {
   .display-1 {
     font-size: 3rem;
@@ -50,5 +112,12 @@
   }
   .intro-info-content {
     margin-bottom: 50%;
+  }
+}
+
+@media (min-width: 768px)
+{
+.col-md-4 {
+  margin-bottom: 10%;
   }
 }

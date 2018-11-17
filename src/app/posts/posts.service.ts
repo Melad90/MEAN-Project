@@ -4,6 +4,10 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
+
+const BACKEND_URL = environment.apiUrl + "/posts";
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
@@ -11,9 +15,9 @@ export class PostsService {
     private PostsUpdated = new Subject<Post[]>();
 
     constructor(private httpClient: HttpClient, private router: Router) {}
-
+    
     getPosts() {
-       this.httpClient.get<{message: string, posts: any }>('http://localhost:3000/api/posts')
+       this.httpClient.get<{message: string, posts: any }>(BACKEND_URL)
        .pipe(map((postData) => {
             return postData.posts.map(post => {
                 return {
@@ -38,12 +42,12 @@ export class PostsService {
 
     getPost(id: string) {
         return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string, imagePath: string, creator: string}>(
-            'http://localhost:3000/api/posts/' + id
+            BACKEND_URL +"/"+ id
         );
     }
 
     deletePost(postId: string) {
-        this.httpClient.delete('http://localhost:3000/api/posts/' + postId)
+        this.httpClient.delete(BACKEND_URL +"/"+ postId)
         .subscribe(() => {
             const updatedPosts = this.posts.filter(post => post.id !== postId);
             this.posts = updatedPosts;
@@ -71,7 +75,7 @@ export class PostsService {
             };
         }
 
-        this.httpClient.put('http://localhost:3000/api/posts/' + id, postData )
+        this.httpClient.put(BACKEND_URL +"/"+ id, postData )
         .subscribe(response => {
             const updatedPosts = [...this.posts];
             const oldPostsIndex =  updatedPosts.findIndex(p => p.id === id);
@@ -97,7 +101,7 @@ export class PostsService {
         formData.append('innehall', innehall);
         formData.append('image', image, rubrik);
         this.httpClient
-        .post<{message: string, post: Post }>('http://localhost:3000/api/posts', formData)
+        .post<{message: string, post: Post }>(BACKEND_URL, formData)
         .subscribe(responseData => {
             const post: Post = {id: responseData.post.id, rubrik: rubrik, ingress: ingress, innehall: innehall, imagePath: responseData.post.imagePath, creator: responseData.post.creator};
             this.posts.push(post);
