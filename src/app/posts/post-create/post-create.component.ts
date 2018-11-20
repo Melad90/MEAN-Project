@@ -6,6 +6,7 @@ import { Post } from '../post.model';
 import { mimeType } from './mime-type.validator';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-post-create',
@@ -36,7 +37,9 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   private authListenerSubs: Subscription;
 
 
-  constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService) { }
+  constructor(public postsService: PostsService, public route: ActivatedRoute, private authService: AuthService, private Title: Title) {
+    this.Title.setTitle('Skapa');
+   }
 
   ngOnInit() {
     this.userIsAuthenticated = this.authService.getIsAuth();

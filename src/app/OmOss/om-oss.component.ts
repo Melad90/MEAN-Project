@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-omoss',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./om-oss.component.css']
 })
 export class OmOssComponent {
-
+  constructor(private Title: Title) {
+    this.Title.setTitle('Om oss');
+  }
 }

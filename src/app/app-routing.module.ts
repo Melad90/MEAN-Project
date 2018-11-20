@@ -11,19 +11,29 @@ import { SignupFormComponent } from "./auth/signup/signup.component";
 import { AdminComponent } from "./admin/admin.component";
 import { PostEditComponent } from "./posts/post-edit/post-edit.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { Aktenskap } from "./Info-pages/Aktenskap/aktenskap.component";
+import { Biskop } from "./Info-pages/Biskop/biskop.component";
+import { Dop } from "./Info-pages/Dop/dop.component";
+import { Kommunion } from "./Info-pages/Kommunion/kommunion.component";
+import { OmPrast } from "./Info-pages/Prast/prast.component";
 
 const routes: Routes = [
-    { path: '', component: StartPageComponent, data: { title: 'Marnarsay'} },
-    { path: 'Nyheter', component: PostListComponent, data: { title: 'Nyheter'} },
+    { path: '', component: StartPageComponent },
+    { path: 'Nyheter', component: PostListComponent },
     { path: 'admin/nyheter/skapa', component: PostCreateComponent, canActivate: [AuthGuard] } ,
     { path: 'admin/nyheter/redigera/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
     { path: 'Nyhet/:postId', component: NewsPageComponent},
-    { path: 'om-oss', component: OmOssComponent, data: { title: 'Om oss'}},
-    { path: 'kontakta-oss', component: KontaktOssComponent, data: { title: 'Kontakta oss'}},
-    { path: 'login', component: LoginFormComponent, data: { title: 'logga in'}},
+    { path: 'om-oss', component: OmOssComponent },
+    { path: 'kontakta-oss', component: KontaktOssComponent },
+    { path: 'login', component: LoginFormComponent},
     { path: 'signup', component: SignupFormComponent},
-    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { title: 'Admin'}},
-    { path: 'admin/nyheter/redigera', component: PostEditComponent, canActivate: [AuthGuard], data: { title: 'Redigera'}}
+    { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+    { path: 'admin/nyheter/redigera', component: PostEditComponent, canActivate: [AuthGuard]},
+    { path: 'Aktenskap', component: Aktenskap },
+    { path: 'Biskop', component: Biskop },
+    { path: 'Dop', component: Dop },
+    { path: 'Kommunion', component: Kommunion },
+    { path: 'Prast', component: OmPrast }
 ];
 
 @NgModule({

@@ -29,6 +29,11 @@ import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
+import { OmPrast } from './Info-pages/Prast/prast.component';
+import { Kommunion } from './Info-pages/Kommunion/kommunion.component';
+import { Dop } from './Info-pages/Dop/dop.component';
+import { Biskop } from './Info-pages/Biskop/biskop.component';
+import { Aktenskap } from "./Info-pages/Aktenskap/aktenskap.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import { AngularMaterialModule } from './angular-material.module';
     SignupFormComponent,
     AdminComponent,
     PostEditComponent,
-    ErrorComponent
+    ErrorComponent,
+    OmPrast,
+    Kommunion,
+    Dop,
+    Biskop,
+    Aktenskap
   ],
   imports: [
     BrowserModule,

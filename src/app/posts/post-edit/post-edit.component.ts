@@ -3,6 +3,7 @@ import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 
  @Component({
@@ -17,7 +18,9 @@ import { AuthService } from 'src/app/auth/auth.service';
      userId: string;
      private authListenerSubs: Subscription;
      private postsSub: Subscription;
-     constructor(public postsService: PostsService, private authService: AuthService) {}
+     constructor(public postsService: PostsService, private authService: AuthService, private Title: Title) {
+        this.Title.setTitle('Redigera');
+     }
 
      ngOnInit() {
          this.postsService.getPosts();

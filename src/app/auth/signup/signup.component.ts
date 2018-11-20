@@ -14,6 +14,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     private authStatusSub: Subscription;
     email = new FormControl('', [Validators.required, Validators.email]);
     password = new FormControl('', [Validators.required]);
+    Name = new FormControl('', [Validators.required]);
 
     constructor(public authService: AuthService) {}
 
@@ -23,6 +24,10 @@ export class SignupFormComponent implements OnInit, OnDestroy {
                 this.isLoading = false;
             }
         );
+    }
+    getErrorMessageName() {
+        return this.Name.hasError('required') ? 'mata in ditt namn!' :
+                '';
     }
     getErrorMessageEpost() {
         return this.email.hasError('required') ? 'mata in Epost!' :
@@ -39,7 +44,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
             return;
         }
         this.isLoading = true;
-        this.authService.createUser(form.value.email, form.value.password);
+        this.authService.createUser(form.value.email, form.value.password, form.value.Name );
     }
 
     ngOnDestroy(){

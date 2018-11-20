@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -13,7 +14,9 @@ export class AdminComponent implements OnInit, OnDestroy {
     userIsAuthenticated = false;
     private authListenerSubs: Subscription;
 
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private Title: Title) {
+        this.Title.setTitle('Admin');
+    }
 
     ngOnInit() {
         this.userIsAuthenticated = this.authService.getIsAuth();

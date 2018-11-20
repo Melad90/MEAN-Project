@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-kontaktoss',
@@ -9,6 +10,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class KontaktOssComponent implements OnInit {
   form: FormGroup;
 
+  constructor(private Title: Title) {
+    this.Title.setTitle('Kontakta oss');
+  }
   ngOnInit() {
     this.form = new FormGroup({
       'namn': new FormControl(null, {

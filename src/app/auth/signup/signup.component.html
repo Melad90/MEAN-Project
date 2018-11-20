@@ -9,6 +9,13 @@
       <!--Body-->
       <form (submit)="onSignup(SignupForm)" #SignupForm="ngForm">
         <div class="md-form">
+          <i class="fa fa-user prefix" style="color: #3f729b !important;"></i>
+          <mat-form-field>
+            <input matInput type="Name" name="Name" ngModel #NamelInput="ngModel" required>
+            <mat-error *ngIf="NamelInput.invalid">{{getErrorMessageName()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="md-form">
           <i class="fa fa-envelope prefix" style="color: #3f729b !important;"></i>
           <mat-form-field>
             <input matInput type="email" name="email" ngModel #emailInput="ngModel" required email>

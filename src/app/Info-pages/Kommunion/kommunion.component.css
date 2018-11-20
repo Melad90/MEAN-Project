@@ -1,0 +1,36 @@
+.card {
+    width: 80%;
+    margin: 2% auto;
+    font-weight: 300;
+    box-shadow: 0 0px 0px 0;
+    height: 100%;
+}
+.card-body {
+    padding-top: 7%;
+}
+
+.card-title {
+    margin-bottom: 2.75rem;
+}
+.image-preview img {
+    float: right;
+    width: 50%;
+    margin-left: 1%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.image-preview p {
+    white-space: pre-wrap;
+}
+
+@media only screen and (min-width: 260px) and (max-width: 600px) {
+    .card-body {
+      padding-top: 20%; 
+    }
+  }
+  
+  @media only screen and (min-width: 600px) and (max-width: 824px) {
+    .card-body {
+      padding-top: 20%; 
+    }
+  }

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Post} from '../post.model';
 import { PostsService } from '../posts.service';
 import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class PostListComponent implements OnInit, OnDestroy {
   isLoading = false;
 
   private postsSub: Subscription;
-  constructor(public postsService: PostsService) {}
+  constructor(public postsService: PostsService, private Title: Title) {
+    this.Title.setTitle('Nyheter');
+  }
 
   
   ngOnInit() {

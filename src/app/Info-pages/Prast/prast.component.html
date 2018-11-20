@@ -1,0 +1,18 @@
+<div class="card card-body" style="border:0px;" *ngIf="!ArPost">
+    <h3 class="card-title">{{ post?.rubrik }}</h3>
+    <h5 class="card-title">{{ post?.ingress }}</h5>
+    <div class="image-preview">
+        <img [src]="post?.imagePath" [alt]="post?.rubrik">
+        <div class="card-text" innerHTML="{{ post?.innehall }}"></div>
+    </div>
+    <h6>{{post?.creator}}</h6>
+</div>
+
+<div dir="rtl" lang="ar" class="card card-body" style="border:0px;" *ngIf="ArPost">
+<h3 class="card-title" style="float:right; text-align: right;">{{ ArPost?.rubrik }}</h3>
+<h5 class="card-title" style="float:right; text-align: right;">{{ ArPost?.ingress }}</h5>
+<div class="image-preview">
+    <img [src]="ArPost?.imagePath" [alt]="ArPost?.rubrik" style="float:left; margin-left: 0%; margin-right: 1%;">
+    <div class="card-text" style="text-align: right;" innerHTML="{{ ArPost?.innehall }}"></div>
+</div>
+</div>

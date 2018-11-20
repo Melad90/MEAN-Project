@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../posts/post.model';
 import { PostsService } from '../posts/posts.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'news-page',
@@ -13,14 +14,13 @@ export class NewsPageComponent implements OnInit{
     post: Post;
     ArPost: Post;
 
-    constructor (public postService: PostsService, public route: ActivatedRoute) {}
+    constructor (public postService: PostsService, public route: ActivatedRoute, private Title: Title) {}
 
     ngOnInit() {
         let Arabic = /^([\u0600-\u06ff]|[\u0750-\u077f]|[\ufb50-\ufbc1]|[\ufbd3-\ufd3f]|[\ufd50-\ufd8f]|[\ufd92-\ufdc7]|[\ufe70-\ufefc]|[\ufdf0-\ufdfd]|[ ])*$/g;
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
             if(paramMap.has('postId')) {
                 this.postId = paramMap.get('postId');
-                console.log('postId ' + this.postId);
                 this.postService.getPost(this.postId).subscribe(postData => {
                     this.post = {
                         id: postData._id, 
@@ -31,7 +31,6 @@ export class NewsPageComponent implements OnInit{
                         creator: postData.creator
                     };
                     if(Arabic.test(this.post.rubrik) === true){
-                        console.log(this.post.rubrik);
                         this.ArPost = {
                             id: this.post.id,
                             rubrik: this.post.rubrik,
@@ -40,7 +39,7 @@ export class NewsPageComponent implements OnInit{
                             imagePath: this.post.imagePath,
                             creator: this.post.creator
                         };
-                    }
+                    }this.Title.setTitle(this.post.rubrik);
                 });
             }
         });

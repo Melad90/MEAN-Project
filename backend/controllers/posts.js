@@ -1,6 +1,10 @@
 const Post = require('../models/post');
 
+/*Post.findOne().populate('creator').exec(function(err, c) {
+    if (err) { return console.log(err); }
 
+    console.log(c.creator.Name);
+});*/
 exports.createPost = (req, res, next) => {
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
