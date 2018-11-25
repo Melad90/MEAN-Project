@@ -1,36 +1,77 @@
-.card {
-    width: 80%;
-    margin: 2% auto;
-    font-weight: 300;
-    box-shadow: 0 0px 0px 0;
-    height: 100%;
-}
-.card-body {
-    padding-top: 7%;
-}
-
-.card-title {
-    margin-bottom: 2.75rem;
-}
-.image-preview img {
+.published {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 100%;
+    vertical-align: baseline;
     float: right;
-    width: 50%;
-    margin-left: 1%;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    color: #7d7d7d;
+    font-size: 13px;
+    font-family: 'Lato',sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+.badge{
+    padding: 1.25em 0.4em;
+}
+.badge-pill {
+    padding-right: 1.6em;
+    padding-left: 1.6em;
+}
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,.6);
+    line-height: 32px;
+    padding: 0 12px;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    background-color: #eceff1;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    cursor: default;
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.chip.chip-md .userImg {
+    height: 42px;
+    width: 42px;
 }
 
-.image-preview p {
-    white-space: pre-wrap;
+.chip .userImg {
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.userImg {
+    vertical-align: middle;
+    border-style: none;
+}
+.chip.chip-md {
+    height: 42px;
+    line-height: 42px;
+    border-radius: 21px;
+}
+.chip.chip-md .userImg {
+    height: 42px;
+    width: 42px;
 }
 
-@media only screen and (min-width: 260px) and (max-width: 600px) {
-    .card-body {
-      padding-top: 20%; 
-    }
-  }
-  
-  @media only screen and (min-width: 600px) and (max-width: 824px) {
-    .card-body {
-      padding-top: 20%; 
-    }
-  }
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) { .published { float: none;} }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { .published {float: none;} }
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991px.98) { .published { float: none;} }
+
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { .published { float: none;} }

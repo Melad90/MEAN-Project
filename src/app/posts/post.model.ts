@@ -5,4 +5,6 @@ export interface Post {
     innehall: string;
     imagePath: string;
     creator: string;
+    creatorID: string;
+    Datum: string;
 }

@@ -41,7 +41,7 @@ exports.Login = (req, res, next) => {
                 message: 'login Failed!  !result'
             });
         }
-        const token = jwt.sign({email: fetchedUser.email, userId: fetchedUser._id}, 'this_is_my_token', {expiresIn: '1h'});
+        const token = jwt.sign({email: fetchedUser.email, userId: fetchedUser._id, Name: fetchedUser.Name}, 'this_is_my_token', {expiresIn: '1h'});
         res.status(200).json({
             token: token,
             expiresIn: 3600,

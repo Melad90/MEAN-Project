@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { DatepickerModule } from 'ngx-bootstrap';
 
 
 const BACKEND_URL = environment.apiUrl + "/posts";
@@ -19,15 +20,27 @@ export class PostsService {
     getPosts() {
        this.httpClient.get<{message: string, posts: any }>(BACKEND_URL)
        .pipe(map((postData) => {
-            return postData.posts.map(post => {
+            return postData.posts.map(post => { if (post.ingress == 'null' || post.ingress == 'undefined')
+            {return {
+                rubrik: post.rubrik,
+                ingress: '',
+                innehall: post.innehall,
+                id: post._id,
+                imagePath: post.imagePath,
+                creator: post.creator,
+                creatorID: post.creatorID,
+                Datum: post.Datum                
+            };} else{
                 return {
                     rubrik: post.rubrik,
                     ingress: post.ingress,
                     innehall: post.innehall,
                     id: post._id,
                     imagePath: post.imagePath,
-                    creator: post.creator
-                };
+                    creator: post.creator,
+                    creatorID: post.creatorID,
+                    Datum: post.Datum
+                };}
             });
        }))
        .subscribe((Transformedposts) => {
@@ -41,7 +54,7 @@ export class PostsService {
     }
 
     getPost(id: string) {
-        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string, imagePath: string, creator: string}>(
+        return this.httpClient.get<{_id: string, rubrik: string, ingress: string, innehall: string, imagePath: string, creator: string, creatorID: string, Datum: string}>(
             BACKEND_URL +"/"+ id
         );
     }
@@ -71,7 +84,9 @@ export class PostsService {
                 ingress: ingress,
                 innehall: innehall,
                 imagePath: image,
-                creator: null
+                creator: null,
+                creatorID: null,
+                Datum: null
             };
         }
 
@@ -85,7 +100,9 @@ export class PostsService {
                 ingress: ingress,
                 innehall: innehall,
                 imagePath: "",
-                creator: null
+                creator: null,
+                creatorID: null,
+                Datum: null
             }
             updatedPosts[oldPostsIndex] = post;
             this.posts = updatedPosts;
@@ -94,7 +111,7 @@ export class PostsService {
         })
     }
 
-    addPost(rubrik: string, ingress: string, innehall: string, image: File) {
+    addPost(rubrik: string, ingress: string, innehall: string, image: File, Datum: string) {
         const formData = new FormData();
         formData.append('rubrik', rubrik);        
         formData.append('ingress', ingress);
@@ -103,7 +120,7 @@ export class PostsService {
         this.httpClient
         .post<{message: string, post: Post }>(BACKEND_URL, formData)
         .subscribe(responseData => {
-            const post: Post = {id: responseData.post.id, rubrik: rubrik, ingress: ingress, innehall: innehall, imagePath: responseData.post.imagePath, creator: responseData.post.creator};
+            const post: Post = {id: responseData.post.id, rubrik: rubrik, ingress: ingress, innehall: innehall, imagePath: responseData.post.imagePath, creator: responseData.post.creator, creatorID: responseData.post.creatorID, Datum: responseData.post.Datum};
             this.posts.push(post);
             this.PostsUpdated.next([...this.posts]);
             this.router.navigate(['/']);

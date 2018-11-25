@@ -96,6 +96,13 @@
   .intro-info-content {
     margin-bottom: 50%;
   }
+  .carousel-multi-item .carousel-inner .carousel-item.active, .carousel-multi-item .carousel-item-next, .carousel-multi-item .carousel-item-prev{
+    display: block;
+  }
+  .carousel-item-next, .carousel-item-prev, .carousel-item.active{
+    transition: transform .6s ease,-webkit-transform .6s ease;
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 410px) and (max-width: 830px) {
@@ -112,6 +119,13 @@
   }
   .intro-info-content {
     margin-bottom: 50%;
+  }
+  .carousel-multi-item .carousel-inner .carousel-item.active, .carousel-multi-item .carousel-item-next, .carousel-multi-item .carousel-item-prev{
+    display: block;
+  }
+  .carousel-item-next, .carousel-item-prev, .carousel-item.active{
+    transition: transform .6s ease,-webkit-transform .6s ease;
+    display: block;
   }
 }
 

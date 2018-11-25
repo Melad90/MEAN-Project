@@ -42,6 +42,10 @@ export class PostCreateComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    let today = new Date();
+    let dd = today.getDate(),
+        mm = today.getMonth() + 1,
+        yyyy = today.getFullYear();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated =>{
       this.userIsAuthenticated = isAuthenticated;
@@ -51,9 +55,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
       'rubrik': new FormControl(null, {
         validators: [ Validators.required, Validators.minLength(5)]
       }),
-      'ingress': new FormControl(null, 
-        {validators: [Validators.required]
-      }),
+      'ingress': new FormControl(null),
       'innehall': new FormControl(null, 
         {validators: [Validators.required, Validators.minLength(20)]
       }),
@@ -74,13 +76,16 @@ export class PostCreateComponent implements OnInit, OnDestroy {
             ingress: postData.ingress, 
             innehall: postData.innehall, 
             imagePath: postData.imagePath,
-            creator: postData.creator
+            creator: postData.creator,
+            creatorID: postData.creatorID,
+            Datum: postData.Datum
           };
           this.form.setValue({
             'rubrik': this.post.rubrik,
             'ingress': this.post.ingress,
             'innehall': this.post.innehall,
-            image: this.post.imagePath
+            image: this.post.imagePath,
+            'Datum': this.post.Datum
           });
         });
       } else {
@@ -108,7 +113,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     if (this.mode === 'create'){
-      this.postsService.addPost(this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall, this.form.value.image); 
+      this.postsService.addPost(this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall, this.form.value.image, this.form.value.Datum); 
     } else {
       this.postsService.updatePost(this.postId, this.form.value.rubrik, this.form.value.ingress, this.form.value.innehall, this.form.value.image);
     }

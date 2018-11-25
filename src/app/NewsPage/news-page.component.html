@@ -1,23 +1,81 @@
-<!--<di class="nyhet">
-    <h3 name="title">{{ post?.title }}</h3><br>
-    <p  name="innehall"> {{ post?.innehall }}</p>
-</di>-->
-<div class="card card-body" style="border:0px;" *ngIf="!ArPost">
-        <h3 class="card-title">{{ post?.rubrik }}</h3>
-        <h5 class="card-title">{{ post?.ingress }}</h5>
-        <div class="image-preview">
-            <img [src]="post?.imagePath" [alt]="post?.rubrik">
-            <div class="card-text" innerHTML="{{ post?.innehall }}"></div>
+<div dir="rtl" lang="ar" class="card card-body" style="border:0px;" *ngIf="ArPost">
+    <section style="margin:5%;" class="section extra-margins mt-5 py-5 text-center text-lg-right">
+        <!--Grid row-->
+        <!--<div class="row my-xl-5 py-xl-4">-->
+            <div class="row justify-content-md-center">
+            <!--Grid column-->
+            <div class="col-sm-12 col-md-12 col-xl-7">
+                <h3 class="dark-grey-text pb-2 font-weight-bold">
+                    <strong>{{ ArPost?.rubrik }}</strong>
+                </h3>
+                <p class="gold-text mb-4 text-uppercase font-weight-bold">{{ ArPost?.ingress }}</p>
+                <hr>
+                <div class="card-text" style="text-align: right;" innerHTML="{{ ArPost?.innehall }}"></div>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-12 col-md-12 col-xl-7">
+                        <div class="chip chip-md">
+                            <img class="userImg" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg"> {{ArPost?.creator}}
+                        </div>
+                    </div>
+                    <div style="margin-bottom:10%;" class="col-sm-12 col-md-12 col-xl-5 order-first">
+                        <span class="published">{{ArPost?.Datum}}</span>
+                    </div>
+                </div>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div style="margin-bottom:10%;" class="col-sm-12 col-md-12 col-xl-5 order-first">
+                <!--Image-->
+                <div class="view overlay" style="text-align: -webkit-center;">
+                    <img [src]="ArPost?.imagePath" [alt]="ArPost?.rubrik" class="img-fluid z-depth-1">
+                    <div class="mask rgba-white-slight"></div>
+                </div>
+                <!--/.Image-->
+            </div>
+            <!--Grid column-->
         </div>
-        <h6>{{post?.creator}}</h6>
+        <!--/Grid row-->
+    </section>
 </div>
 
-<div dir="rtl" lang="ar" class="card card-body" style="border:0px;" *ngIf="ArPost">
-    <h3 class="card-title" style="float:right; text-align: right;">{{ ArPost?.rubrik }}</h3>
-    <h5 class="card-title" style="float:right; text-align: right;">{{ ArPost?.ingress }}</h5>
-    <div class="image-preview">
-        <img [src]="ArPost?.imagePath" [alt]="ArPost?.rubrik" style="float:left; margin-left: 0%; margin-right: 1%;">
-        <div class="card-text" style="text-align: right;" innerHTML="{{ ArPost?.innehall }}"></div>
-    </div>
-    <h6 style="text-align:right;">{{post?.creator}}</h6>
+<div class="card card-body" style="border:0px;" *ngIf="!ArPost">
+    <section style="margin:5%;" class="section extra-margins mt-5 py-5 text-center text-lg-left">
+        <!--Grid row-->
+        <div class="row justify-content-md-center">
+            <!--Grid column-->
+            <div class="col-sm-12 col-md-12 col-xl-7">
+                <h3 class="dark-grey-text pb-2 font-weight-bold">
+                    <strong>{{ post?.rubrik }}</strong>
+                </h3>
+                <p class="gold-text mb-4 text-uppercase font-weight-bold">{{ post?.ingress }}</p>
+                <hr>
+                <div class="card-text" innerHTML="{{ post?.innehall }}"></div>
+                <p class="dark-grey-text mt-4 text-justify" innerHTML="{{ post?.innehall }}"></p>
+                <hr>
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-12 col-md-12 col-xl-7">
+                        <div class="chip chip-md">
+                            <img class="userImg" src="https://mdbootstrap.com/img/Photos/Avatars/avatar-10.jpg"> {{post?.creator}}
+                        </div>
+                    </div>
+                    <div style="margin-bottom:10%;" class="col-sm-12 col-md-12 col-xl-5 order-first">
+                        <span class="published">{{post?.Datum}}</span>
+                    </div>
+                </div>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div style="margin-bottom:10%;" class="col-sm-12 col-md-12 col-xl-5 order-first">
+                <!--Image-->
+                <div class="view overlay" style="text-align: -webkit-center; margin-bottom: 1.5rem;">
+                    <img [src]="post?.imagePath" [alt]="post?.rubrik" class="img-fluid z-depth-1">
+                    <div class="mask rgba-white-slight"></div>
+                </div>
+                <!--/.Image-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--/Grid row-->
+    </section>
 </div>

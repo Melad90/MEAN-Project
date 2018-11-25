@@ -1,18 +1,19 @@
 const Post = require('../models/post');
 
-/*Post.findOne().populate('creator').exec(function(err, c) {
-    if (err) { return console.log(err); }
-
-    console.log(c.creator.Name);
-});*/
 exports.createPost = (req, res, next) => {
+    let today = new Date();
+    let dd = today.getDate(),
+        mm = today.getMonth() + 1,
+        yyyy = today.getFullYear();
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         rubrik: req.body.rubrik,
         ingress: req.body.ingress,
         innehall: req.body.innehall,
         imagePath:  url + '/images/' + req.file.filename,
-        creator: req.userData.userId
+        creator: req.userData.Name,
+        creatorID: req.userData.userId,
+        Datum: dd+'-'+mm+'-'+yyyy
     });
     post.save().then(result => {
         res.status(201).json({
@@ -28,12 +29,16 @@ exports.createPost = (req, res, next) => {
     })
     .catch(error => {
         res.status(500).json({
-            message: 'Skapandet av post misslyckades!'
+            message: 'Skapandet av post misslyckades!' + error
         }); 
     });
 }
 
 exports.updatePost = (req, res, next) => {
+    let today = new Date();
+    let dd = today.getDate(),
+        mm = today.getMonth() + 1,
+        yyyy = today.getFullYear();
     let imagePath = req.body.imagePath;
     if (req.file) {
         const url = req.protocol + '://' + req.get('host');
@@ -45,10 +50,10 @@ exports.updatePost = (req, res, next) => {
         ingress: req.body.ingress,
         innehall: req.body.innehall,
         imagePath: imagePath,
-        creator: req.userData.userId
+        Datum: dd+'-'+mm+'-'+yyyy
     });
-    Post.updateOne({_id: req.params.id, creator: req.userData.userId }, post).then(result => {
-        if (result.n > 0 ){
+    Post.updateOne({_id: req.params.id, creatorID: req.userData.userId }, post).then(result => {
+        if (result.nModified > 0 ){
             res.status(200).json({message: 'Update Successful!'});
         } else {
             res.status(401).json({message: 'Not Authorized!'});
@@ -62,7 +67,7 @@ exports.updatePost = (req, res, next) => {
 }
 
 exports.getAllPost = (req, res, next) => {
-    Post.find().sort({rubrik: -1}).then(documents => {
+    Post.find().sort({Datum: -1}).then(documents => {
         res.status(200).json({
             message: 'Posts fetched succesfully!',
             posts: documents
@@ -91,7 +96,7 @@ exports.getSinglePost = (req, res, next) => {
 }
 
 exports.deletePost = (req, res, next) => {
-    Post.deleteOne({_id: req.params.id, creator: req.userData.userId}).then(result => {
+    Post.deleteOne({_id: req.params.id, creatorID: req.userData.userId}).then(result => {
         if (result.n > 0 ) {
             res.status(200).json({message: 'Deletion success!'});
         } else {

@@ -21,25 +21,54 @@ export class NewsPageComponent implements OnInit{
         this.route.paramMap.subscribe((paramMap: ParamMap) => {
             if(paramMap.has('postId')) {
                 this.postId = paramMap.get('postId');
-                this.postService.getPost(this.postId).subscribe(postData => {
-                    this.post = {
-                        id: postData._id, 
-                        rubrik: postData.rubrik, 
-                        ingress: postData.ingress, 
-                        innehall: postData.innehall,
-                        imagePath: postData.imagePath,
-                        creator: postData.creator
-                    };
-                    if(Arabic.test(this.post.rubrik) === true){
-                        this.ArPost = {
-                            id: this.post.id,
-                            rubrik: this.post.rubrik,
-                            ingress: this.post.ingress,
-                            innehall: this.post.innehall,
-                            imagePath: this.post.imagePath,
-                            creator: this.post.creator
+                this.postService.getPost(this.postId).subscribe(postData => { 
+                    if (postData.ingress == 'null' || postData.ingress == 'undefined'){
+                        this.post = {
+                            id: postData._id, 
+                            rubrik: postData.rubrik, 
+                            ingress: '', 
+                            innehall: postData.innehall,
+                            imagePath: postData.imagePath,
+                            creator: postData.creator,
+                            creatorID: postData.creatorID,
+                            Datum: postData.Datum
                         };
-                    }this.Title.setTitle(this.post.rubrik);
+                        if(Arabic.test(this.post.rubrik) === true){
+                            this.ArPost = {
+                                id: this.post.id,
+                                rubrik: this.post.rubrik,
+                                ingress: '',
+                                innehall: this.post.innehall,
+                                imagePath: this.post.imagePath,
+                                creator: this.post.creator,
+                                creatorID: this.post.creatorID,
+                                Datum: this.post.Datum
+                            };
+                        }this.Title.setTitle(this.post.rubrik);}
+                    else{
+                        this.post = {
+                            id: postData._id, 
+                            rubrik: postData.rubrik, 
+                            ingress: postData.ingress, 
+                            innehall: postData.innehall,
+                            imagePath: postData.imagePath,
+                            creator: postData.creator,
+                            creatorID: postData.creatorID,
+                            Datum: postData.Datum
+                        };
+                        if(Arabic.test(this.post.rubrik) === true){
+                            this.ArPost = {
+                                id: this.post.id,
+                                rubrik: this.post.rubrik,
+                                ingress: this.post.ingress,
+                                innehall: this.post.innehall,
+                                imagePath: this.post.imagePath,
+                                creator: this.post.creator,
+                                creatorID: this.post.creatorID,
+                                Datum: this.post.Datum
+                            };
+                        }this.Title.setTitle(this.post.rubrik);
+                    }
                 });
             }
         });

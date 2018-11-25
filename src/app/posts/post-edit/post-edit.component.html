@@ -24,7 +24,7 @@
                     {{ post?.rubrik }}
                     </mat-expansion-panel-header>
                     <div innerHTML="{{ post?.innehall }}"></div>
-                    <mat-action-row *ngIf="userIsAuthenticated && userId == post.creator">
+                    <mat-action-row *ngIf="userIsAuthenticated && userId == post.creatorID">
                         <a mat-button color="primary"><i class="material-icons" [routerLink]="['/admin/nyheter/redigera', post.id]">edit</i></a>
                         <a mat-button color="warn"(click)="onDelete(post.id)"><i class="material-icons">delete_forever</i></a>
                     </mat-action-row>

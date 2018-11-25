@@ -28,7 +28,10 @@
                 <a mat-button class="nav-link" routerLink="/om-oss">Om oss</a>
             </li>
             <li *ngIf="userIsAuthenticated" class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
-                <button mat-button class="nav-link" (click)="onLogout()" style="background-color: #3f729b !important;">Logga ut</button>
+                <a mat-button class="nav-link" routerLink="/admin">Admin</a>
+            </li>
+            <li *ngIf="userIsAuthenticated" class="nav-item waves-light" routerLinkActive="active" mdbWavesEffect>
+                <a mat-button class="nav-link" (click)="onLogout()" style="background-color: #3f729b !important;">Logga ut</a>
             </li>
           </ul>
       </links>
